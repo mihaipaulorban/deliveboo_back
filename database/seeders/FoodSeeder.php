@@ -33,13 +33,13 @@ class FoodSeeder extends Seeder
 
         for ($i = 0; $i < $length; $i++) {
 
-            $new_food = new Food();
+            $new_foods = new Food();
 
-            $new_food->title = $food_seed['title_seed'][$i];
-            $new_food->description = $food_seed['desc_seed'][$i];
-            $new_food->price = $food_seed['price_seed'][$i];
+            $new_foods->name = $food_seed['title_seed'][$i];
+            $new_foods->description = $food_seed['desc_seed'][$i];
+            $new_foods->price = $food_seed['price_seed'][$i];
 
-            $new_food->save();
+            $new_foods->save();
         }
     }
 }
