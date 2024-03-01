@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FoodRequest;
 use App\Models\Food;
 use Illuminate\Http\Request;
 
@@ -22,30 +23,28 @@ class FoodController extends Controller
      */
     public function create(Food $foods)
     {
-        return view('create', compact('foods'));
+        return view('foods.create', compact('foods'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FoodRequest $request)
     {
-        // Qui si potrebbe aggiungere una form request validation passando come parametro della funzione store il nome della form request e invece
-        // di $request->all(); usare $request->validated();
-        $data = $request->all();
+        $data = $request->validate();
         $food = new Food();
         $food->fill($data);
         $food->save();
         // Più tardi si potrebbe passare lo slug invece che l'id per cui usare $food non $food->id
-        return redirect()->route('admin.foods.index', $food->id)->with('message', 'Piatto aggiunto correttamente');
+        return redirect()->route('dashboard.foods.index', $food->id)->with('message', 'Piatto aggiunto correttamente');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Food $food)
+    public function show(Food $foods)
     {
-        return view('show', compact('food'));
+        return view('foods.show', compact('foods'));
     }
 
     /**
@@ -59,9 +58,11 @@ class FoodController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(FoodRequest $request, string $id)
     {
-        //
+        $data = $request->validate();
+        $food->update($data);
+        return redirect()->route('dashboard.foods.index', $food->id)->with('message', 'Progetto aggiornato correttamente');
     }
 
     /**
@@ -69,6 +70,7 @@ class FoodController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $project->delete();
+        return redirect()->route('dashboard.projects.index')->with('message', 'Progetto cancellato correttamente');
     }
 }
