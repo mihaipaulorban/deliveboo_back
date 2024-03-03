@@ -21,8 +21,9 @@ class FoodController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Food $foods)
+    public function create()
     {
+        $foods = Food::all();
         return view('foods.create', compact('foods'));
     }
 
@@ -52,13 +53,13 @@ class FoodController extends Controller
      */
     public function edit(Food $food)
     {
-        return view('edit', compact('food'));
+        return view('foods.edit', compact('food'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(FoodRequest $request, string $id)
+    public function update(FoodRequest $request, Food $food)
     {
         $data = $request->validate();
         $food->update($data);
@@ -68,9 +69,9 @@ class FoodController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Food $food)
     {
-        $project->delete();
-        return redirect()->route('dashboard.projects.index')->with('message', 'Progetto cancellato correttamente');
+        $food->delete();
+        return redirect()->route('dashboard.foods.index')->with('message', 'Progetto cancellato correttamente');
     }
 }
