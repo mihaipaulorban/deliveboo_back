@@ -43,9 +43,9 @@ class FoodController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Food $foods)
+    public function show(Food $food)
     {
-        return view('foods.show', compact('foods'));
+        return view('foods.show', compact('food'));
     }
 
     /**
