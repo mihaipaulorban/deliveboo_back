@@ -25,7 +25,7 @@ class UpdateRestaurantRequest extends FormRequest
             'name' => ['required', 'string'],
             'address' => ['required', 'string'],
             'logo' => ['nullable', 'image'],
-            'p_iva' => ['nullable', 'integer', 'digits:11'],
+            'p_iva' => ['required', 'integer', 'digits:11'],
             'cover_img' => ['nullable', 'image']
         ];
     }
