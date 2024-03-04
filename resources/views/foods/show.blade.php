@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-    @dd($food)
     <div class="container">
         <h1> {{ $food->name }}</h1>
         <p>{{ $food->description }}</p>
