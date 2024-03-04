@@ -1,1 +1,37 @@
 @import "~bootstrap/scss/bootstrap";
+
+th,
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table th:first-child,
+.table td:first-child {
+    text-align: left;
+}
+
+.fa,
+.fa-soluid {
+    color: #ffffff;
+}
+
+#sidebarMenu {
+    background-color: #343434;
+    border-radius: 50px;
+    height: 60%;
+    width: 10%;
+    padding: 30px 0;
+    margin-top: 60px;
+    margin-left: 20px;
+
+    .nav-item {
+        :hover {
+            background-color: #ffffff3e;
+        }
+
+        a {
+            color: white;
+        }
+    }
+}
