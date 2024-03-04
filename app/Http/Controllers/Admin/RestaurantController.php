@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
 use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
@@ -13,7 +14,9 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        //
+        $restaurants = Restaurant::all();
+
+        return view('dashboard', compact('restaurants'));
     }
 
     /**
@@ -21,7 +24,8 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        $restaurants = Restaurant::all();
+        return view('restaurants.create', compact('restaurants'));
     }
 
     /**
@@ -29,7 +33,13 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
-        //
+        $data = $request->validate();
+        $new_restaurant = new Restaurant();
+        $new_restaurant->fill($data);
+        $new_restaurant->save();
+
+        /* ricordarsi di cancellare id per passare lo slug */
+        return redirect()->route('admin.restaurants.index', $new_restaurant->id)->with('message', 'Restaurant added successfully');
     }
 
     /**
@@ -37,7 +47,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        return view('restaurants.show', compact('restaurant'));
     }
 
     /**
@@ -45,7 +55,7 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        //
+        return view('restaurants.edit', compact('restaurant'));
     }
 
     /**
@@ -53,7 +63,9 @@ class RestaurantController extends Controller
      */
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
-        //
+        $data = $request->validate();
+        $restaurant->update($data);
+        return redirect()->route('admin.restaurants.index', $restaurant->id);
     }
 
     /**
