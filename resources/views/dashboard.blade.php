@@ -38,7 +38,10 @@
                 <td>{{ $food->description }}</td>
                 {{-- Modifica --}}
                 <td>
-                    <a>Modifica</a>
+                    <a href="{{route('admin.foods.edit', $food)}}">Modifica</a>
+                </td>
+                <td>
+                    <a href="{{route('admin.foods.show', $food)}}">Visualizza</a>
                 </td>
                 {{-- Elimina --}}
                 <td>
