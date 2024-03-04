@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    {{-- @include('partials.errors') --}}
+    @include('partials.errors')
     <div class="container">
         <form action="{{ route('admin.foods.update', $food->id) }}" method="POST">
             @csrf
@@ -36,26 +36,26 @@
             </div>
             <label for="is_visible" class="form-label mt-3">Can you see the item in your listing?</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="is_visible" id="is_visible1" checked>
+                <input class="form-check-input" type="radio" name="is_visible" id="is_visible1" value="1" checked>
                 <label class="form-check-label" for="is_visible">
                     Visible
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="is_visible" id="is_visible2">
+                <input class="form-check-input" type="radio" name="is_visible" id="is_visible2" value="0">
                 <label class="form-check-label" for="flexRadioDefault2">
                     Not Visible
                 </label>
             </div>
             <label for="is_visible" class="form-label mt-3">Is this dish vegetarian?</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="is_vegetarian" id="is_veggie1">
+                <input class="form-check-input" type="radio" name="is_vegetarian" id="is_veggie1" value="1">
                 <label class="form-check-label" for="is_veggie">
                     Yes
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="is_vegetarian" id="is_veggie2" checked>
+                <input class="form-check-input" type="radio" name="is_vegetarian" id="is_veggie2" value="0" checked>
                 <label class="form-check-label" for="is_veggie">
                     No
                 </label>

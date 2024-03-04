@@ -66,7 +66,7 @@ class FoodController extends Controller
      */
     public function update(FoodUpdateRequest $request, Food $food)
     {
-        $data = $request->validate();
+        $data = $request->validated();
         if (isset($data['img'])) {
             $food->img = Storage::put('uploads', $data['img']);
         };
