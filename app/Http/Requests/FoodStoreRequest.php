@@ -25,7 +25,7 @@ class FoodStoreRequest extends FormRequest
             'name' => ['required', 'string'],
             'img' => ['image', 'required'],
             'description' => ['string', 'nullable'],
-            'price' => ['required', 'decimal:5,2'],
+            'price' => ['required', 'numeric', 'between:0,99.99'],
             'is_visible' => ['required', 'boolean'],
             'is_vegetarian' => ['required', 'boolean'],
         ];

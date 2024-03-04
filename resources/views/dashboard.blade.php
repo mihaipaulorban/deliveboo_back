@@ -6,7 +6,7 @@
     <h2>Piatti</h2>
 
     {{-- Pulsante crea nuovo cibo --}}
-    <a href="/" class="hoverable btn btn-success my-4">
+    <a href="{{ route('admin.foods.create') }}" class="hoverable btn btn-success my-4">
         <i class="fa-solid fa-plus"></i>
     </a>
 
@@ -55,7 +55,7 @@
                 </td>
                 {{-- Elimina --}}
                 <td>
-                    <form>
+                    <form action="{{ route('admin.foods.destroy', $food) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger hoverable rounded" onclick="return confirm('Sei sicuro di voler eliminare questo cibo?')">

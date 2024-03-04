@@ -34,7 +34,7 @@ class FoodController extends Controller
      */
     public function store(FoodStoreRequest $request)
     {
-        $data = $request->validate();
+        $data = $request->validated();
         $food = new Food();
         $food->fill($data);
         if (isset($data['img'])) {
