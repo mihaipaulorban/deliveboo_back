@@ -55,7 +55,7 @@
                 </td>
                 {{-- Elimina --}}
                 <td>
-                    <form>
+                    <form action="{{ route('admin.foods.destroy', $food) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger hoverable rounded" onclick="return confirm('Sei sicuro di voler eliminare questo cibo?')">
