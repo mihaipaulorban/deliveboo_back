@@ -28,20 +28,20 @@
             <label for="price" class="form-label">Set the price</label>
             <div class="input-group mb-3">
                 <span class="input-group-text">€</span>
-                <input type="text" class="form-control" name="price" aria-label="Amount (to the nearest euro)">
+                <input type="text" class="form-control" name="price" aria-label="Amount (to the nearest euro)" value="{{ old('price', $food->price) }}">
                 @error('price')
                     <div class="alert alert-danger mt-1">{{ $message }}</div>
                 @enderror
             </div>
             <label for="is_visible" class="form-label mt-3">Can you see the item in your listing?</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="is_visible" id="is_visible1" value="1" checked>
+                <input class="form-check-input" type="radio" name="is_visible" id="is_visible1" value="1" checked value="{{ old('is_visible', $food->is_visible) }}">
                 <label class="form-check-label" for="is_visible">
                     Visible
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="is_visible" id="is_visible2" value="0">
+                <input class="form-check-input" type="radio" name="is_visible" id="is_visible2" value="0"  value="{{ old('is_visible', $food->is_visible) }}">
                 <label class="form-check-label" for="flexRadioDefault2">
                     Not Visible
                 </label>
@@ -51,13 +51,13 @@
             </div>
             <label for="is_visible" class="form-label mt-3">Is this dish vegetarian?</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="is_vegetarian" id="is_veggie1" value="1">
+                <input class="form-check-input" type="radio" name="is_vegetarian" id="is_veggie1" value="1" value="{{ old('is_vegetarian', $food->is_vegetarian) }}">
                 <label class="form-check-label" for="is_veggie">
                     Yes
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="is_vegetarian" id="is_veggie2" value="0" checked>
+                <input class="form-check-input" type="radio" name="is_vegetarian" id="is_veggie2" value="0" checked value="{{ old('is_vegetarian', $food->is_vegetarian) }}">
                 <label class="form-check-label" for="is_veggie">
                     No
                 </label>
@@ -67,7 +67,7 @@
             </div>
             <div class="my-3">
                 <label for="img" class="form-label">Insert an image for the Dish</label>
-                <input class="form-control" type="file" id="img" name="img">
+                <input class="form-control" type="file" id="img" name="img" value="{{ old('img', $food->img) }}">
                 @error('img')
                     <div class="alert alert-danger mt-1">{{ $message }}</div>
                 @enderror
