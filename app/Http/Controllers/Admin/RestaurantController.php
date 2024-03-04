@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
 use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -33,9 +34,15 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
-        $data = $request->validate();
+        $data = $request->validated();
         $new_restaurant = new Restaurant();
         $new_restaurant->fill($data);
+        if (isset($data['cover_img'])) {
+            $new_restaurant->cover_img = Storage::put('uploads', $data['cover_img']);
+        };
+        if (isset($data['logo'])) {
+            $new_restaurant->logo = Storage::put('uploads', $data['logo']);
+        };
         $new_restaurant->save();
 
         /* ricordarsi di cancellare id per passare lo slug */
@@ -63,7 +70,13 @@ class RestaurantController extends Controller
      */
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
-        $data = $request->validate();
+        $data = $request->validated();
+        if (isset($data['cover_img'])) {
+            $restaurant->cover_img = Storage::put('uploads', $data['cover_img']);
+        };
+        if (isset($data['logo'])) {
+            $restaurant->logo = Storage::put('uploads', $data['logo']);
+        };
         $restaurant->update($data);
         return redirect()->route('admin.restaurants.index', $restaurant->id);
     }
