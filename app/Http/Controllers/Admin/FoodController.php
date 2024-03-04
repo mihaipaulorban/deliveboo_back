@@ -37,7 +37,7 @@ class FoodController extends Controller
         $food->fill($data);
         $food->save();
         // Più tardi si potrebbe passare lo slug invece che l'id per cui usare $food non $food->id
-        return redirect()->route('dashboard.foods.index', $food->id)->with('message', 'Piatto aggiunto correttamente');
+        return redirect()->route('admin.foods.index', $food->id)->with('message', 'Piatto aggiunto correttamente');
     }
 
     /**
@@ -63,7 +63,7 @@ class FoodController extends Controller
     {
         $data = $request->validate();
         $food->update($data);
-        return redirect()->route('dashboard.foods.index', $food->id)->with('message', 'Progetto aggiornato correttamente');
+        return redirect()->route('admin.foods.index', $food->id)->with('message', 'Progetto aggiornato correttamente');
     }
 
     /**
@@ -72,6 +72,6 @@ class FoodController extends Controller
     public function destroy(Food $food)
     {
         $food->delete();
-        return redirect()->route('dashboard.foods.index')->with('message', 'Progetto cancellato correttamente');
+        return redirect()->route('admin.foods.index')->with('message', 'Progetto cancellato correttamente');
     }
 }
