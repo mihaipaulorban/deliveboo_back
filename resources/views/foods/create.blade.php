@@ -45,11 +45,12 @@
                     <label class="form-check-label" for="vegetarian_yes">Yes</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="is_vegetarian" id="vegetarian_no" value="0" checked>
+                    <input class="form-check-input" type="radio" name="is_vegetarian" id="vegetarian_no" value="0"
+                        checked>
                     <label class="form-check-label" for="vegetarian_no">No</label>
                 </div>
                 @error('is_vegetarian')
-                <div class="alert alert-danger mt-1">{{ $message }}</div>
+                    <div class="alert alert-danger mt-1">{{ $message }}</div>
                 @enderror
             </div>
             <!-- Radio button per indicare se il piatto è visibile -->
@@ -58,7 +59,8 @@
                     <h3>Is the dish visible?</h3>
                 </label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="is_visible" id="visible_yes" value="1" checked>
+                    <input class="form-check-input" type="radio" name="is_visible" id="visible_yes" value="1"
+                        checked>
                     <label class="form-check-label" for="vegetarian_yes">Yes</label>
                 </div>
                 <div class="form-check">
@@ -66,7 +68,7 @@
                     <label class="form-check-label" for="vegetarian_no">No</label>
                 </div>
                 @error('is_visible')
-                <div class="alert alert-danger mt-1">{{ $message }}</div>
+                    <div class="alert alert-danger mt-1">{{ $message }}</div>
                 @enderror
             </div>
             <!-- Campo per inserire il prezzo -->

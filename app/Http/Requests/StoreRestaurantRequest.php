@@ -29,4 +29,10 @@ class StoreRestaurantRequest extends FormRequest
             'cover_img' => ['nullable', 'image']
         ];
     }
+    public function messages(): array
+    {
+        return [
+            'p_iva.required' => 'the VAT number must be 11 numbers long',
+        ];
+    }
 }
