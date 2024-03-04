@@ -13,12 +13,19 @@ class RestaurantSeeder extends Seeder
      */
     public function run(): void
     {
-        $restaurants = ['Pizzeria Bella Napoli', 'Kebab Piramide d\'Egitto', 'Ristorante Vista Mare', 'Bar Alta Montagna'];
-        foreach ($restaurants as $restaurant) {
+        $restaurants = [
+            ['name' => 'Pizzeria Bella Napoli', 'address' => 'Indirizzo Pizzeria Bella Napoli', 'p_iva' => '12345678901'],
+            ['name' => 'Kebab Piramide d\'Egitto', 'address' => 'Indirizzo Kebab Piramide d\'Egitto', 'p_iva' => '23456789012'],
+            ['name' => 'Ristorante Vista Mare', 'address' => 'Indirizzo Ristorante Vista Mare', 'p_iva' => '34567890123'],
+            ['name' => 'Bar Alta Montagna', 'address' => 'Indirizzo Bar Alta Montagna', 'p_iva' => '45678901234']
+        ];
 
+        foreach ($restaurants as $restaurantData) {
             $new_restaurant = new Restaurant();
 
-            $new_restaurant->name = $restaurant;
+            $new_restaurant->name = $restaurantData['name'];
+            $new_restaurant->address = $restaurantData['address'];
+            $new_restaurant->p_iva = $restaurantData['p_iva'];
 
             $new_restaurant->save();
         }

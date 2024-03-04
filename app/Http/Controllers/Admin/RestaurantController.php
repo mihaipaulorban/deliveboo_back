@@ -16,7 +16,7 @@ class RestaurantController extends Controller
     {
         $restaurants = Restaurant::all();
 
-        return view('dashboard', compact('restaurants'));
+        return view('restaurants.index', compact('restaurants'));
     }
 
     /**
