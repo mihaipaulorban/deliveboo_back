@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\FoodRequest;
+use App\Http\Requests\FoodStoreRequest;
+use App\Http\Requests\FoodUpdateRequest;
 use App\Models\Food;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FoodController extends Controller
 {
@@ -30,11 +32,14 @@ class FoodController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(FoodRequest $request)
+    public function store(FoodStoreRequest $request)
     {
         $data = $request->validate();
         $food = new Food();
         $food->fill($data);
+        if (isset($data['img'])) {
+            $food->img = Storage::put('uploads', $data['img']);
+        };
         $food->save();
         // Più tardi si potrebbe passare lo slug invece che l'id per cui usare $food non $food->id
         return redirect()->route('admin.foods.index', $food->id)->with('message', 'Piatto aggiunto correttamente');
@@ -59,9 +64,12 @@ class FoodController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(FoodRequest $request, Food $food)
+    public function update(FoodUpdateRequest $request, Food $food)
     {
         $data = $request->validate();
+        if (isset($data['img'])) {
+            $food->img = Storage::put('uploads', $data['img']);
+        };
         $food->update($data);
         return redirect()->route('admin.foods.index', $food->id)->with('message', 'Progetto aggiornato correttamente');
     }
@@ -71,6 +79,9 @@ class FoodController extends Controller
      */
     public function destroy(Food $food)
     {
+        if ($food->img) {
+            Storage::delete($food->img);
+        }
         $food->delete();
         return redirect()->route('admin.foods.index')->with('message', 'Progetto cancellato correttamente');
     }
