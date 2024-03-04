@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container mt-4 vh-100">
-
     {{-- Titolo --}}
     <h2>Progetti</h2>
 
@@ -11,14 +10,8 @@
         Crea Nuovo Cibo
     </a>
 
-    {{-- Pulsanti per gestire i cibi --}}
-    <a href="/" class="hoverable btn btn-primary my-4">
-        Gestione Cibi
-    </a>
-
     {{-- Tabella --}}
     <table class="table table-borderless table-hover">
-
         {{-- Intestazione --}}
         <thead>
             <tr>
@@ -33,80 +26,32 @@
 
         {{-- Corpo --}}
         <tbody>
-            {{-- Progetto 1 --}}
+            @foreach($foods as $food)
             <tr>
                 {{-- ID --}}
-                <td>1</td>
-                {{-- Titolo --}}
-                <td>Titolo Progetto 1</td>
+                <td>{{ $food->id }}</td>
+                {{-- Nome --}}
+                <td>{{ $food->name }}</td>
                 {{-- Prezzo --}}
-                <td>
-                    <span class="badge text-bg-success">6,99€</span>
-                </td>
+                <td>{{ $food->price }}</td>
                 {{-- Descrizione --}}
-                <td>
-                    <button class="btn btn-info hoverable">Info</button>
-                </td>
+                <td>{{ $food->description }}</td>
                 {{-- Modifica --}}
                 <td>
-                    <button class="btn btn-primary hoverable">Modifica</button>
+                    <a>Modifica</a>
                 </td>
                 {{-- Elimina --}}
                 <td>
-                    <button class="btn btn-danger hoverable" onclick="return confirm('Sei sicuro di voler eliminare questo progetto?')">Elimina</button>
+                    <form>
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger hoverable" onclick="return confirm('Sei sicuro di voler eliminare questo cibo?')">Elimina</button>
+                    </form>
                 </td>
             </tr>
-        
-            {{-- Progetto 2 --}}
-            <tr>
-                {{-- ID --}}
-                <td>2</td>
-                {{-- Titolo --}}
-                <td>Titolo Progetto 2</td>
-                {{-- Prezzo --}}
-                <td>
-                    <span class="badge text-bg-success">6,99€</span>
-                </td>
-                {{-- Descrizione --}}
-                <td>
-                    <button class="btn btn-info hoverable">Info</button>
-                </td>
-                {{-- Modifica --}}
-                <td>
-                    <button class="btn btn-primary hoverable">Modifica</button>
-                </td>
-                {{-- Elimina --}}
-                <td>
-                    <button class="btn btn-danger hoverable" onclick="return confirm('Sei sicuro di voler eliminare questo progetto?')">Elimina</button>
-                </td>
-            </tr>
-        
-            {{-- Progetto 3 --}}
-            <tr>
-                {{-- ID --}}
-                <td>3</td>
-                {{-- Titolo --}}
-                <td>Titolo Progetto 3</td>
-                {{-- Prezzo --}}
-                <td>
-                    <span class="badge text-bg-success">6,99€</span>
-                </td>
-                {{-- Descrizione --}}
-                <td>
-                    <button class="btn btn-info hoverable">Info</button>
-                </td>
-                {{-- Modifica --}}
-                <td>
-                    <button class="btn btn-primary hoverable">Modifica</button>
-                </td>
-                {{-- Elimina --}}
-                <td>
-                    <button class="btn btn-danger hoverable" onclick="return confirm('Sei sicuro di voler eliminare questo progetto?')">Elimina</button>
-                </td>
-            </tr>
+            @endforeach
         </tbody>
-        
-
     </table>
 </div>
 @endsection
+
