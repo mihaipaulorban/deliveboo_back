@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-    {{-- @include('partials.errors') --}}
+    @include('partials.errors')
     <div class="container">
-        <form action="{{route('admin.foods.update', $food->id)}}" method="POST">            
+        <form action="{{ route('admin.foods.update', $food->id) }}" method="POST">
             @csrf
             @method('PATCH')
             <h1 class="text-center">Edit a food</h1>
@@ -11,47 +11,61 @@
                 <label class="form-label">
                     <h2>Food name</h2>
                 </label>
-                <input type="text" class="form-control" name="title" value="{{ old('title', $food->name) }}">
+                <input type="text" class="form-control" name="name" @error('name') is-invalid @enderror
+                    value="{{ old('name', $food->name) }}">
                 @error('name')
-                <div class="alert alert-danger mt-1">{{ $message }}</div>
+                    <div class="alert alert-danger mt-1">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
                 <label class="form-label">
                     <h3>Food Description</h3>
                 </label>
-                <textarea class="form-control" rows="3" name="description">{{ old('description', $food->description) }}</textarea>
+                <textarea class="form-control" rows="3" @error('description') is-invalid @enderror name="description">{{ old('description', $food->description) }}</textarea>
                 @error('description')
                     <div class="alert alert-danger mt-1">{{ $message }}</div>
                 @enderror
             </div>
-            <!-- Campo per l'immagine -->
-            <div class="mb-3">
-                <label class="form-label">
-                    <h3>Food Image</h3>
-                </label>
-                <input type="file" class="form-control" name="image" accept="image/*" required>
+            <label for="price" class="form-label">Set the price</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text">€</span>
+                <input type="text" class="form-control" name="price" aria-label="Amount (to the nearest euro)">
+                @error('price')
+                    <div class="alert alert-danger mt-1">{{ $message }}</div>
+                @enderror
             </div>
-            <!-- Radio button per indicare se l'utente è vegetariano -->
-            <div class="mb-3">
-                <label class="form-label">
-                    <h3>Are you vegetarian?</h3>
+            <label for="is_visible" class="form-label mt-3">Can you see the item in your listing?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="is_visible" id="is_visible1" value="1" checked>
+                <label class="form-check-label" for="is_visible">
+                    Visible
                 </label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="is_vegetarian" id="vegetarian_yes" value="1" {{ $food->is_vegetarian ? 'checked' : '' }}>
-                    <label class="form-check-label" for="vegetarian_yes">Yes</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="is_vegetarian" id="vegetarian_no" value="0" {{ $food->is_vegetarian ? '' : 'checked' }}>
-                    <label class="form-check-label" for="vegetarian_no">No</label>
-                </div>
             </div>
-            <!-- Campo per inserire il prezzo -->
-            <div class="mb-3">
-                <label class="form-label">
-                    <h3>Price</h3>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="is_visible" id="is_visible2" value="0">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Not Visible
                 </label>
-                <input type="number" class="form-control" name="price" value="{{ old('price', $food->price) }}" required>
+            </div>
+            <label for="is_visible" class="form-label mt-3">Is this dish vegetarian?</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="is_vegetarian" id="is_veggie1" value="1">
+                <label class="form-check-label" for="is_veggie">
+                    Yes
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="is_vegetarian" id="is_veggie2" value="0" checked>
+                <label class="form-check-label" for="is_veggie">
+                    No
+                </label>
+            </div>
+            <div class="my-3">
+                <label for="img" class="form-label">Insert an image for the Dish</label>
+                <input class="form-control" type="file" id="img" name="img">
+                @error('img')
+                    <div class="alert alert-danger mt-1">{{ $message }}</div>
+                @enderror
             </div>
             <button type="submit" class="btn btn-success">Submit</button>
         </form>
