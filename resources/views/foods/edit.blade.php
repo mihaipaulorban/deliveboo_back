@@ -9,9 +9,9 @@
         <h1 class="text-center">Edit a food</h1>
         <div class="mb-3">
             <label class="form-label">
-                <h2>Food title</h2>
+                <h2>Food name</h2>
             </label>
-            <input type="text" class="form-control" name="title" value="{{ old('title', $food->name) }}">
+            <input type="text" class="form-control" name="name" value="{{ old('name', $food->name) }}">
         </div>
         <div class="mb-3">
             <label class="form-label">
