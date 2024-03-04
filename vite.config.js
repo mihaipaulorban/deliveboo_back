@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
 import path from "path";
-import "@fortawesome/fontawesome-free/css/all.css";
+import css from "vite-plugin-css";
 
 export default defineConfig({
     plugins: [
