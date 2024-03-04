@@ -1,9 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-    @include('partials.errors')
     <div class="container">
-        <form action="{{ route('admin.foods.update', $food->id) }}" method="POST">
+        <form action="{{ route('admin.foods.update', $food->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <h1 class="text-center">Edit a food</h1>
@@ -46,6 +45,9 @@
                 <label class="form-check-label" for="flexRadioDefault2">
                     Not Visible
                 </label>
+                @error('is_visible')
+                    <div class="alert alert-danger mt-1">{{ $message }}</div>
+                @enderror
             </div>
             <label for="is_visible" class="form-label mt-3">Is this dish vegetarian?</label>
             <div class="form-check">
@@ -59,6 +61,9 @@
                 <label class="form-check-label" for="is_veggie">
                     No
                 </label>
+                @error('is_vegetarian')
+                    <div class="alert alert-danger mt-1">{{ $message }}</div>
+                @enderror
             </div>
             <div class="my-3">
                 <label for="img" class="form-label">Insert an image for the Dish</label>

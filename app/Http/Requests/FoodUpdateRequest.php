@@ -23,7 +23,7 @@ class FoodUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'img' => ['string', 'required'],
+            'img' => ['image', 'required'],
             'description' => ['string', 'nullable'],
             'price' => ['required', 'numeric', 'between:0,99.99'],
             'is_visible' => ['required', 'boolean'],
