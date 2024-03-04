@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-4 vh-100">
     {{-- Titolo --}}
-    <h2>Progetti</h2>
+    <h2>Piatti</h2>
 
     {{-- Pulsante crea nuovo cibo --}}
     <a href="/" class="hoverable btn btn-success my-4">
