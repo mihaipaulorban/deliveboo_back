@@ -1,7 +1,10 @@
 <?php
 
+
 use App\Http\Controllers\Admin\FoodController;
+use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\ProfileController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,6 +30,7 @@ Route::middleware(['auth', 'verified'])
     ->prefix('admin')
     ->group(function () {
         Route::resource('foods', FoodController::class);
+        Route::resource('restaurants', RestaurantController::class);
     });
 
 require __DIR__ . '/auth.php';
