@@ -5,9 +5,9 @@
     {{-- Titolo --}}
     <h2>Progetti</h2>
 
-    {{-- Pulsante crea nuovo progetto --}}
+    {{-- Pulsante crea nuovo cibo --}}
     <a href="/" class="hoverable btn btn-success my-4">
-        Crea Nuovo Cibo
+        <i class="fa-solid fa-plus"></i>
     </a>
 
     {{-- Tabella --}}
@@ -19,6 +19,7 @@
                 <th>Nome</th>
                 <th>Prezzo</th>
                 <th>Descrizione</th>
+                <th>Ingredienti</th>
                 <th>Modifica</th>
                 <th>Elimina</th>
             </tr>
@@ -36,19 +37,30 @@
                 <td>{{ $food->price }}</td>
                 {{-- Descrizione --}}
                 <td>{{ $food->description }}</td>
+                {{-- Visualizza --}}
+                <td>
+                    <a href="{{route('admin.foods.show', $food)}}">
+                        <div class="btn btn-info hoverable rounded">
+                            <i class="fa fa-seedling"></i>
+                        </div>
+                    </a>
+                </td>
                 {{-- Modifica --}}
                 <td>
-                    <a href="{{route('admin.foods.edit', $food)}}">Modifica</a>
-                </td>
-                <td>
-                    <a href="{{route('admin.foods.show', $food)}}">Visualizza</a>
+                    <a href="{{route('admin.foods.edit', $food)}}">
+                        <div class="btn btn-warning rounded">
+                            <i class="fa fa-edit"></i>
+                        </div>
+                    </a>
                 </td>
                 {{-- Elimina --}}
                 <td>
                     <form>
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger hoverable" onclick="return confirm('Sei sicuro di voler eliminare questo cibo?')">Elimina</button>
+                        <button type="submit" class="btn btn-danger hoverable rounded" onclick="return confirm('Sei sicuro di voler eliminare questo cibo?')">
+                            <i class="fa fa-trash-alt"></i>
+                        </button>
                     </form>
                 </td>
             </tr>
@@ -57,4 +69,3 @@
     </table>
 </div>
 @endsection
-
