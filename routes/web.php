@@ -9,9 +9,9 @@ Route::get('/', function () {
 });
 
 // Definizione della rotta per il dashboard
-Route::middleware(['auth', 'verified'])
-    ->get('/dashboard', [FoodController::class, 'index'])
-    ->name('dashboard');
+// Route::middleware(['auth', 'verified'])
+//     ->get('/dashboard', [FoodController::class, 'index'])
+//     ->name('dashboard');
 
 Route::middleware('auth')
     ->name('admin.')
