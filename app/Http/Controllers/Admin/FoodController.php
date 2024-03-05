@@ -31,6 +31,16 @@ class FoodController extends Controller
         return view('foods.create');
     }
 
+
+    /**
+     
+Display the specified resource.*/
+    public function show(Food $food)
+    {
+        return view('foods.show', compact('food'));
+    }
+
+
     /**
      * Store a newly created resource in storage.
      */
