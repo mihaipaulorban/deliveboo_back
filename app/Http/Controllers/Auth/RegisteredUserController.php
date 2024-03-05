@@ -52,7 +52,7 @@ class RegisteredUserController extends Controller
         $user->save();
 
         // Creo il ristorante
-        Restaurant::create([
+        $restaurant = Restaurant::create([
             'name' => $request->restaurant_name,
             'address' => $request->address,
             'p_iva' => $request->p_iva,
@@ -60,10 +60,13 @@ class RegisteredUserController extends Controller
         ]);
 
         // Creo il food type
-        Type::create([
-            'name' => $request->restaurant_type,
-            'img' => $request->restaurant_type_img,
+        $type = Type::create([
+            'name' => implode(',', $request->restaurant_types),
+            'img' => $request->type->img,
         ]);
+
+        // Associo il type al ristorante
+        $restaurant->type()->associate($type);
 
         // Autentico l'utente nel sistema
         Auth::login($user);
