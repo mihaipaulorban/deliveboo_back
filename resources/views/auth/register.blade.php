@@ -129,7 +129,7 @@
                                 <option selected>Select restaurant category</option>
                                 @foreach ($restaurants_type as $index => $type)
                                     <option value="{{ $index }}">{{ $type->name }}</option>
-                                @endfor
+                                @endforeach
                             </select>
                             <!-- Fine nuovi campi per il ristorante -->
 
