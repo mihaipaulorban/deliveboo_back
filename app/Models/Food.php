@@ -12,6 +12,10 @@ class Food extends Model
     protected $guarded = ['img'];
     protected $table = "foods";
 
+    protected $fillable = [
+        'name', 'img', 'description', 'price', 'is_visible', 'is_vegetarian', 'restaurant_id'
+    ];
+
     public function restaurant()
     {
         return $this->belongsTo(Restaurant::class);

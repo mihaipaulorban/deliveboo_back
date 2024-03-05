@@ -19,15 +19,25 @@ class FoodUpdateRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules()
     {
-        return [
-            'name' => ['required', 'string'],
-            'img' => ['image', 'required'],
-            'description' => ['string', 'nullable'],
-            'price' => ['required', 'numeric', 'between:0,99.99'],
-            'is_visible' => ['required', 'boolean'],
-            'is_vegetarian' => ['required', 'boolean'],
+        $rules = [
+            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:1000',
+            'price' => 'required|numeric',
+            'is_visible' => 'required|boolean',
+            'is_vegetarian' => 'required|boolean',
         ];
+
+
+        if (!$this->food->img) {
+            // Se l'immagine non esiste é obbligatoria
+            $rules['img'] = 'required|image|mimes:jpeg,png,jpg|max:2048';
+        } else {
+            // Se esiste già un'immagine diventa opzionale.
+            $rules['img'] = 'sometimes|image|mimes:jpeg,png,jpg|max:2048';
+        }
+
+        return $rules;
     }
 }
