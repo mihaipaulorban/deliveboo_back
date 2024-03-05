@@ -80,7 +80,7 @@
         </table>
 
         {{-- Titolo Piatti Non Visibili --}}
-        <h2 class="mt-4">Archived Menu</h2>
+        <h2 class="mt-4">Archived Food items</h2>
 
         {{-- Tabella Piatti Non Visibili --}}
         <table class="table table-borderless table-hover mt-4">
