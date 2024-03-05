@@ -110,7 +110,7 @@
 
                             <div class="mb-4 row">
                                 <label for="p_iva"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Partita IVA') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('VAT number') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="p_iva" type="text"
