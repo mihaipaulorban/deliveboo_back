@@ -5,6 +5,13 @@
     {{-- Titolo --}}
     <h2>Piatti</h2>
 
+    {{-- Messaggio di conferma --}}
+    @if (session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+    @endif
+
     {{-- Pulsante crea nuovo cibo --}}
     <a href="{{ route('admin.foods.create') }}" class="hoverable btn btn-success my-4">
         <i class="fa-solid fa-plus"></i>
