@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\FoodType;
 use App\Models\User;
 use App\Models\Restaurant;
+use App\Models\Type;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -21,7 +21,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        $restaurants_type = FoodType::all();
+        $restaurants_type = Type::all();
         return view('auth.register', compact('restaurants_type'));
     }
 
@@ -60,7 +60,7 @@ class RegisteredUserController extends Controller
         ]);
 
         // Creo il food type
-        FoodType::create([
+        Type::create([
             'name' => $request->restaurant_type,
             'img' => $request->restaurant_type_img,
         ]);

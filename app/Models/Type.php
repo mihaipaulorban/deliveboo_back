@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FoodType extends Model
+class Type extends Model
 {
     use HasFactory;
 
@@ -13,5 +13,4 @@ class FoodType extends Model
     {
         return $this->belongsToMany(Food::class, 'restaurant_food_types');
     }
-
 }
