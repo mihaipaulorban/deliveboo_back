@@ -1,8 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-    @include('partials.errors')
-
     <div class="container">
         <form action="{{ route('admin.foods.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
