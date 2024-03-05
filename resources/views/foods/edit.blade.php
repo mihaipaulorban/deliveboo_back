@@ -65,7 +65,7 @@
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="is_vegetarian" id="is_veggie2" value="0" checked {{ old('is_vegetarian', $food->is_vegetarian) === 0  ? 'checked' : '' }}>
+                <input class="form-check-input" type="radio" name="is_vegetarian" id="is_veggie2" value="0" {{ old('is_vegetarian', $food->is_vegetarian) === 0  ? 'checked' : '' }}>
                 <label class="form-check-label" for="is_veggie2">
                     No
                 </label>
