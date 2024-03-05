@@ -47,7 +47,7 @@ class FoodController extends Controller
         };
         $food->save();
         // Più tardi si potrebbe passare lo slug invece che l'id per cui usare $food non $food->id
-        return redirect()->route('admin.foods.index', $food->id)->with('message', 'Piatto aggiunto correttamente');
+        return redirect()->route('admin.foods.index', $food->id)->with('message', 'Food item added successfully');
     }
 
     /**
@@ -76,7 +76,7 @@ class FoodController extends Controller
             $food->img = Storage::put('uploads', $data['img']);
         };
         $food->update($data);
-        return redirect()->route('admin.foods.index', $food->id)->with('message', 'Progetto aggiornato correttamente');
+        return redirect()->route('admin.foods.index', $food->id)->with('message', 'Food items updated successfully');
     }
 
     /**
@@ -88,6 +88,6 @@ class FoodController extends Controller
             Storage::delete($food->img);
         }
         $food->delete();
-        return redirect()->route('admin.foods.index')->with('message', 'Progetto cancellato correttamente');
+        return redirect()->route('admin.foods.index')->with('message', 'Food items deleted successfully');
     }
 }

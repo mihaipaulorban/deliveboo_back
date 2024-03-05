@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mt-4 vh-100">
         {{-- Titolo --}}
-        <h2>Menus</h2>
+        <h2>Food items</h2>
 
         {{-- Messaggio di conferma --}}
         @if (session('message'))
@@ -14,7 +14,7 @@
 
         {{-- Pulsante crea nuovo cibo --}}
         <a href="{{ route('admin.foods.create') }}" class="hoverable btn btn-success my-4">
-            Add a new menu <i class="fa-solid fa-plus"></i>
+            Add a new food item <i class="fa-solid fa-plus"></i>
         </a>
 
 
@@ -69,7 +69,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger hoverable rounded"
-                                    onclick="return confirm('Sei sicuro di voler eliminare questo cibo?')">
+                                    onclick="return confirm('Are you sure you want to delete this dish?')">
                                     <i class="fa fa-trash-alt"></i>
                                 </button>
                             </form>
@@ -80,7 +80,7 @@
         </table>
 
         {{-- Titolo Piatti Non Visibili --}}
-        <h2 class="mt-4">Archieved Menu</h2>
+        <h2 class="mt-4">Archived Menu</h2>
 
         {{-- Tabella Piatti Non Visibili --}}
         <table class="table table-borderless table-hover mt-4">
@@ -132,7 +132,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger hoverable rounded"
-                                    onclick="return confirm('Sei sicuro di voler eliminare questo cibo?')">
+                                    onclick="return confirm('Are you sure you want to delete this dish?')">
                                     <i class="fa fa-trash-alt "></i>
                                 </button>
                             </form>
