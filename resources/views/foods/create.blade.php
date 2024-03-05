@@ -82,16 +82,7 @@
                     <div class="alert alert-danger mt-1">{{ $message }}</div>
                 @enderror
             </div>
-            <!-- Campo per inserire il prezzo -->
-            <div class="mb-3">
-                <label class="form-label">
-                    <h3>Price</h3>
-                </label>
-                <input type="number" class="form-control" name="price" value="{{ old('price') }}" required>
-                @error('price')
-                    <div class="alert alert-danger mt-1">{{ $message }}</div>
-                @enderror
-            </div>
+           
             <button type="submit" class="btn btn-success">Submit</button>
         </form>
         <div>
