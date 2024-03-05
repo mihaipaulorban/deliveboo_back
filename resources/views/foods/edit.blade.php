@@ -32,7 +32,7 @@
                 </label>
                 <div class="input-group mb-3">
                     <span class="input-group-text">€</span>
-                    <input type="text" class="form-control" name="price" aria-label="Amount (to the nearest euro)" value="{{ old('price') }}">
+                    <input type="text" class="form-control" name="price" aria-label="Amount (to the nearest euro)" value="{{ old('price', $food->price) }}">
                 </div>
                 @error('price')
                     <div class="alert alert-danger">{{ $message }}</div>
