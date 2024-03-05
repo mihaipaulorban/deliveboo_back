@@ -14,7 +14,7 @@ class User extends Authenticatable
 
     public function restaurant()
     {
-        return $this->hasOne(Restaurant::class, 'user_id');
+        return $this->hasOne(Restaurant::class);
     }
 
     protected $fillable = [
