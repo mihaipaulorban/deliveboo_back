@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Restaurant;
+use App\Models\Type;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -20,7 +21,8 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $restaurants_type = Type::all();
+        return view('auth.register', compact('restaurants_type'));
     }
 
     /**
@@ -39,7 +41,7 @@ class RegisteredUserController extends Controller
             'p_iva' => 'required|string|max:11|unique:restaurants',
         ]);
 
-        // Crea l'utente associato al ristorante
+        // Creo l'utente associato al ristorante
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
@@ -49,7 +51,7 @@ class RegisteredUserController extends Controller
         // Salvo l'utente che ho creato
         $user->save();
 
-        // Crea il ristorante
+        // Creo il ristorante
         Restaurant::create([
             'name' => $request->restaurant_name,
             'address' => $request->address,
@@ -57,13 +59,19 @@ class RegisteredUserController extends Controller
             'user_id' => $user->id,
         ]);
 
-        // Autentica l'utente nel sistema
+        // Creo il food type
+        Type::create([
+            'name' => $request->restaurant_type,
+            'img' => $request->restaurant_type_img,
+        ]);
+
+        // Autentico l'utente nel sistema
         Auth::login($user);
 
-        // Invia l'evento di registrazione
+        // Invio l'evento di registrazione
         event(new Registered($user));
 
-        // Reindirizza l'utente alla home
+        // Reindirizzo l'utente alla home
         return redirect(RouteServiceProvider::HOME);
     }
 }
