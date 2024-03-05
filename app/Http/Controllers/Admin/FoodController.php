@@ -16,8 +16,13 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $foods = Food::all();
-        return view('dashboard', compact('foods'));
+        // Seleziona tutti i piatti visibili
+        $foods = Food::where('is_visible', 1)->get();
+
+        // Seleziona tutti i piatti non visibili
+        $notVisibleFoods = Food::where('is_visible', 0)->get();
+
+        return view('dashboard', compact('foods', 'notVisibleFoods'));
     }
 
     /**
