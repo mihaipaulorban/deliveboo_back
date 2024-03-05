@@ -33,8 +33,9 @@ class FoodController extends Controller
 
 
     /**
-     
-Display the specified resource.*/
+     * 
+     * Display the specified resource.
+     * */
     public function show(Food $food)
     {
         return view('foods.show', compact('food'));
