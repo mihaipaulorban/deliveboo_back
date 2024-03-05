@@ -76,6 +76,12 @@
             <div class="my-3">
                 <label for="img" class="form-label">Insert an image for the Dish</label>
                 <input class="form-control" type="file" id="img" name="img" value="{{ old('img', $food->img) }}">
+                @if($food->img)
+                    <div class="current-image mt-4">
+                        <p>Currrent image:</p>
+                        <img style="width: 300px;" src="{{ asset('storage/' . $food->img) }}" alt="current-image">
+                    </div>
+                @endif
                 @error('img')
                     <div class="alert alert-danger mt-1">{{ $message }}</div>
                 @enderror
