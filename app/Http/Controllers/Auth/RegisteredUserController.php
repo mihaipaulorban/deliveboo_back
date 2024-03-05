@@ -32,6 +32,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        //dd($request);
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -60,13 +61,10 @@ class RegisteredUserController extends Controller
         ]);
 
         // Creo il food type
-        $type = Type::create([
-            'name' => implode(',', $request->restaurant_types),
-            'img' => $request->type->img,
-        ]);
-
-        // Associo il type al ristorante
-        $restaurant->type()->associate($type);
+        if (isset($request['restaurant_types'])) {
+            $restaurant->types()->sync($request['restaurant_types']);
+        };
+        $restaurant->save();
 
         // Autentico l'utente nel sistema
         Auth::login($user);

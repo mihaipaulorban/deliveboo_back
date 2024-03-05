@@ -3,7 +3,7 @@
 @section('content')
     @include('partials.session_message')
     <div class="container">
-        @dd($restaurants)
+
         <h1>My restaurants</h1>
         <ul>
             @foreach ($restaurants as $restaurant)
@@ -13,6 +13,9 @@
                     </a>
                     <p>{{ $restaurant->address }}</p>
                     <p>Partita IVA: {{ $restaurant->p_iva }}</p>
+                    @foreach ($restaurant->types as $type)
+                        <span>{{ $type->name }}</span>
+                    @endforeach
                     {{-- <form action="{{ route('admin.restaurants.destroy', $restaurant) }}" onsubmit="return confirm('Are you sure you want to delete this record?');" method="post">
                 @csrf
                 @method('delete')

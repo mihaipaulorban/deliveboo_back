@@ -127,7 +127,7 @@
 
                             @foreach ($restaurants_type as $type)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="{{ $type->name }}"
+                                    <input class="form-check-input" type="checkbox" value="{{ $type->id }}"
                                         id="{{ $type->id }}" name="restaurant_types[]">
                                     <label class="form-check-label" for="{{ $type->id }}">
                                         {{ $type->name }}
