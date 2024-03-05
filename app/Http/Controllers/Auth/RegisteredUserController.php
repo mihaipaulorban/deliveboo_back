@@ -21,7 +21,8 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $restaurants_type = FoodType::all();
+        return view('auth.register', compact('restaurants_type'));
     }
 
     /**
