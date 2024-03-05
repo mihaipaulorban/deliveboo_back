@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FoodStoreRequest;
 use App\Http\Requests\FoodUpdateRequest;
 use App\Models\Food;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class FoodController extends Controller
@@ -15,7 +16,9 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $foods = Food::where('is_visible', 1)->get();
+        $restaurantId = Auth::user()->restaurant->id;
+
+        $foods = Food::where('restaurant_id', $restaurantId)->where('is_visible', 1)->get();
         $notVisibleFoods = Food::where('is_visible', 0)->get();
         return view('dashboard', compact('foods', 'notVisibleFoods'));
     }
@@ -35,25 +38,20 @@ class FoodController extends Controller
     {
         $data = $request->validated();
 
-        // Controlla se l'utente autenticato ha un ristorante associato
-        if (auth()->user()->restaurant) {
-            // Aggiungi il restaurant_id dal ristorante associato all'utente autenticato
-            $data['restaurant_id'] = auth()->user()->restaurant->id;
+        $restaurantId = Auth::user()->restaurant->id;
 
-            $food = new Food();
-            $food->fill($data);
+        $data['restaurant_id'] = $restaurantId;
 
-            if ($request->hasFile('img')) {
-                $food->img = Storage::put('uploads', $request->file('img'));
-            }
+        $new_food = new Food;
+        $new_food->fill($data);
 
-            $food->save();
-
-            return redirect()->route('admin.foods.index')->with('message', 'Piatto aggiunto correttamente');
-        } else {
-            // Gestisci il caso in cui l'utente non abbia un ristorante associato
-            return redirect()->route('admin.foods.index')->with('error', 'Non hai un ristorante associato. Impossibile aggiungere il piatto.');
+        if ($request->hasFile('img')) {
+            $new_food->img = Storage::put('uploads', $request->file('img'));
         }
+
+        $new_food->save();
+
+        return redirect()->route('admin.foods.index')->with('message', 'Food item added successfully.');
     }
 
     /**
