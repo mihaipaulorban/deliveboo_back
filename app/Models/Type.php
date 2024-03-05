@@ -13,4 +13,6 @@ class Type extends Model
     {
         return $this->belongsToMany(Food::class, 'restaurant_food_types');
     }
+
+    protected $guarded = [];
 }

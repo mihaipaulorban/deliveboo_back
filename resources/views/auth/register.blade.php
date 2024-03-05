@@ -125,12 +125,18 @@
                                 </div>
                             </div>
 
-                            <select class="form-select">
-                                <option selected>Select restaurant category</option>
-                                @foreach ($restaurants_type as $index => $type)
-                                    <option value="{{ $index }}">{{ $type->name }}</option>
-                                @endforeach
-                            </select>
+
+
+                            @foreach ($restaurants_type as $index => $type)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="{{ $index }}"
+                                        id="{{ $index }}" name="{{ $index }}">
+                                    <label class="form-check-label" for="{{ $index }}">
+                                        {{ $type->name }}
+                                    </label>
+                                </div>
+                            @endforeach
+
                             <!-- Fine nuovi campi per il ristorante -->
 
                             <div class="mb-4 row mb-0">
