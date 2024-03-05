@@ -29,6 +29,8 @@ class RestaurantTypesSeeder extends Seeder
 
             $new_type->name = $type['name'];
             $new_type->img = $type['img'];
+
+            $new_type->save();
         }
     }
 }
