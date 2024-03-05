@@ -40,7 +40,7 @@ class RegisteredUserController extends Controller
             'p_iva' => 'required|string|max:11|unique:restaurants',
         ]);
 
-        // Crea l'utente associato al ristorante
+        // Creo l'utente associato al ristorante
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
@@ -50,7 +50,7 @@ class RegisteredUserController extends Controller
         // Salvo l'utente che ho creato
         $user->save();
 
-        // Crea il ristorante
+        // Creo il ristorante
         Restaurant::create([
             'name' => $request->restaurant_name,
             'address' => $request->address,
@@ -58,18 +58,19 @@ class RegisteredUserController extends Controller
             'user_id' => $user->id,
         ]);
 
+        // Creo il food type
         FoodType::create([
             'name' => $request->restaurant_type,
             'img' => $request->restaurant_type_img,
         ]);
 
-        // Autentica l'utente nel sistema
+        // Autentico l'utente nel sistema
         Auth::login($user);
 
-        // Invia l'evento di registrazione
+        // Invio l'evento di registrazione
         event(new Registered($user));
 
-        // Reindirizza l'utente alla home
+        // Reindirizzo l'utente alla home
         return redirect(RouteServiceProvider::HOME);
     }
 }
