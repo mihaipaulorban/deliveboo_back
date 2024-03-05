@@ -127,7 +127,7 @@
 
                             <select class="form-select">
                                 <option selected>Select restaurant category</option>
-                                @for ($restaurants_type as $index => $type)
+                                @foreach ($restaurants_type as $index => $type)
                                     <option value="{{ $index }}">{{ $type->name }}</option>
                                 @endfor
                             </select>
