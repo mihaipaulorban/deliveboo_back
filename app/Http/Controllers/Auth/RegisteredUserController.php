@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\FoodType;
 use App\Models\User;
 use App\Models\Restaurant;
 use App\Providers\RouteServiceProvider;
@@ -55,6 +56,11 @@ class RegisteredUserController extends Controller
             'address' => $request->address,
             'p_iva' => $request->p_iva,
             'user_id' => $user->id,
+        ]);
+
+        FoodType::create([
+            'name' => $request->restaurant_type,
+            'img' => $request->restaurant_type_img,
         ]);
 
         // Autentica l'utente nel sistema
