@@ -38,6 +38,7 @@ class RegisteredUserController extends Controller
             'address' => 'required|string|max:255',
             'p_iva' => 'required|string|max:11|unique:restaurants',
         ]);
+
         // Crea l'utente associato al ristorante
         $user = new User([
             'name' => $request->name,
@@ -45,18 +46,16 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        // Salvo l'utente che ho creato
+        $user->save();
 
         // Crea il ristorante
-        $restaurant = new Restaurant([
+        Restaurant::create([
             'name' => $request->restaurant_name,
             'address' => $request->address,
             'p_iva' => $request->p_iva,
-            'user_id' => $user->id
+            'user_id' => $user->id,
         ]);
-        $restaurant->user()->associate($user);
-        $restaurant->save();
-        // Salva l'utente e associa il ristorante ad esso
-
 
         // Autentica l'utente nel sistema
         Auth::login($user);
