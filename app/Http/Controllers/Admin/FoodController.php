@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FoodStoreRequest;
 use App\Http\Requests\FoodUpdateRequest;
 use App\Models\Food;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class FoodController extends Controller
@@ -16,12 +15,8 @@ class FoodController extends Controller
      */
     public function index()
     {
-        // Seleziona tutti i piatti visibili
         $foods = Food::where('is_visible', 1)->get();
-
-        // Seleziona tutti i piatti non visibili
         $notVisibleFoods = Food::where('is_visible', 0)->get();
-
         return view('dashboard', compact('foods', 'notVisibleFoods'));
     }
 
@@ -30,8 +25,7 @@ class FoodController extends Controller
      */
     public function create()
     {
-        $foods = Food::all();
-        return view('foods.create', compact('foods'));
+        return view('foods.create');
     }
 
     /**
@@ -40,22 +34,26 @@ class FoodController extends Controller
     public function store(FoodStoreRequest $request)
     {
         $data = $request->validated();
-        $food = new Food();
-        $food->fill($data);
-        if (isset($data['img'])) {
-            $food->img = Storage::put('uploads', $data['img']);
-        };
-        $food->save();
-        // Più tardi si potrebbe passare lo slug invece che l'id per cui usare $food non $food->id
-        return redirect()->route('admin.foods.index', $food->id)->with('message', 'Food item added successfully');
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Food $food)
-    {
-        return view('foods.show', compact('food'));
+        // Controlla se l'utente autenticato ha un ristorante associato
+        if (auth()->user()->restaurant) {
+            // Aggiungi il restaurant_id dal ristorante associato all'utente autenticato
+            $data['restaurant_id'] = auth()->user()->restaurant->id;
+
+            $food = new Food();
+            $food->fill($data);
+
+            if ($request->hasFile('img')) {
+                $food->img = Storage::put('uploads', $request->file('img'));
+            }
+
+            $food->save();
+
+            return redirect()->route('admin.foods.index')->with('message', 'Piatto aggiunto correttamente');
+        } else {
+            // Gestisci il caso in cui l'utente non abbia un ristorante associato
+            return redirect()->route('admin.foods.index')->with('error', 'Non hai un ristorante associato. Impossibile aggiungere il piatto.');
+        }
     }
 
     /**
@@ -72,11 +70,18 @@ class FoodController extends Controller
     public function update(FoodUpdateRequest $request, Food $food)
     {
         $data = $request->validated();
-        if (isset($data['img'])) {
-            $food->img = Storage::put('uploads', $data['img']);
-        };
+
+        if ($request->hasFile('img')) {
+            // Elimina l'immagine precedente prima di caricare quella nuova
+            if ($food->img) {
+                Storage::delete($food->img);
+            }
+            $data['img'] = Storage::put('uploads', $request->file('img'));
+        }
+
         $food->update($data);
-        return redirect()->route('admin.foods.index', $food->id)->with('message', 'Food items updated successfully');
+
+        return redirect()->route('admin.foods.index')->with('message', 'Piatto aggiornato correttamente');
     }
 
     /**
@@ -84,10 +89,13 @@ class FoodController extends Controller
      */
     public function destroy(Food $food)
     {
+        // Elimina l'immagine associata al piatto prima di eliminarlo
         if ($food->img) {
             Storage::delete($food->img);
         }
+
         $food->delete();
-        return redirect()->route('admin.foods.index')->with('message', 'Food items deleted successfully');
+
+        return redirect()->route('admin.foods.index')->with('message', 'Piatto cancellato correttamente');
     }
 }

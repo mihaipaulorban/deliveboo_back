@@ -20,6 +20,7 @@ return new class extends Migration
             $table->boolean('is_visible')->default(1);
             $table->boolean('is_vegetarian')->default(0);
             $table->timestamps();
+            $table->foreignId('restaurant_id')->constrained()->onDelete('cascade');
         });
     }
 
