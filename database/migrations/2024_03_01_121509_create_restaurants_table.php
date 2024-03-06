@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->string('name', 50);
+            $table->string('slug', 100);
             $table->string('address');
             $table->string('logo')->nullable();
             $table->string('p_iva', 11);
