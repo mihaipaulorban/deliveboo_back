@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Str;
 
 class RegisteredUserController extends Controller
 {
@@ -52,12 +53,14 @@ class RegisteredUserController extends Controller
         // Salvo l'utente che ho creato
         $user->save();
 
+
         // Creo il ristorante
         $restaurant = Restaurant::create([
             'name' => $request->restaurant_name,
             'address' => $request->address,
             'p_iva' => $request->p_iva,
             'user_id' => $user->id,
+            'slug' => Str::of($request->restaurant_name)->slug('-')
         ]);
 
         // Creo il food type

@@ -8,6 +8,7 @@ use App\Http\Requests\FoodUpdateRequest;
 use App\Models\Food;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class FoodController extends Controller
 {
@@ -52,6 +53,8 @@ class FoodController extends Controller
 
         $new_food = new Food();
         $new_food->fill($data);
+
+        $new_food->slug = Str::of($data['name'])->slug('-');
 
         if ($request->hasFile('img')) {
             $new_food->img = Storage::put('uploads', $request->file('img'));
