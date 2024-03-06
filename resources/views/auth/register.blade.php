@@ -115,7 +115,8 @@
                                 <div class="col-md-6">
                                     <input id="p_iva" type="text"
                                         class="form-control @error('p_iva') is-invalid @enderror" name="p_iva"
-                                        value="{{ old('p_iva') }}" required minlength="11" maxlength="11" autocomplete="p_iva">
+                                        value="{{ old('p_iva') }}" required minlength="11" maxlength="11"
+                                        autocomplete="p_iva">
 
                                     @error('p_iva')
                                         <span class="invalid-feedback" role="alert">
@@ -140,6 +141,11 @@
                                             </div>
                                         </div>
                                     @endforeach
+                                    @error('restaurant_types')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <p class="fw-bolder mt-3">
                                     Select at least one field
