@@ -26,13 +26,14 @@ class StoreRestaurantRequest extends FormRequest
             'address' => ['required', 'string'],
             'logo' => ['nullable', 'image'],
             'p_iva' => ['required', 'integer', 'digits:11'],
-            'cover_img' => ['nullable', 'image']
+            'cover_img' => ['nullable', 'image'],
+            'types' => ['required', 'array', 'min:1', 'max:9'],
         ];
     }
     public function messages(): array
     {
         return [
-            'p_iva.required' => 'the VAT number must be 11 numbers long',
+            'p_iva.required' => 'The VAT number must be 11 digits long',
         ];
     }
 }

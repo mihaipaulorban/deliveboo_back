@@ -33,7 +33,6 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        //dd($request);
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -41,6 +40,7 @@ class RegisteredUserController extends Controller
             'restaurant_name' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'p_iva' => 'required|string|max:11|unique:restaurants',
+            'restaurant_types' => ['required', 'array', 'min:1', 'max:9'],
         ]);
 
         // Creo l'utente associato al ristorante
