@@ -1,17 +1,6 @@
 @import "~bootstrap/scss/bootstrap";
-.pr-img {
-    display: block;
-    position: absolute;
-    bottom: 20px;
-}
-
-.pr {
-    position: relative;
-}
-
-.container-img {
-    height: 300px;
-}
+@import "welcome.scss";
+@import "register.scss";
 
 th,
 td {
