@@ -27,7 +27,6 @@ class StoreRestaurantRequest extends FormRequest
             'logo' => ['nullable', 'image'],
             'p_iva' => ['required', 'integer', 'digits:11'],
             'cover_img' => ['nullable', 'image'],
-            'types' => ['required', 'array', 'min:1', 'max:9'],
         ];
     }
     public function messages(): array
