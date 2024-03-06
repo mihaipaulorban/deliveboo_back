@@ -16,11 +16,11 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $restaurantId = Auth::user()->restaurant->id;
+        $restaurant_id = Auth::user()->restaurant->id;
 
-        $foods = Food::where('restaurant_id', $restaurantId)->where('is_visible', 1)->get();
-        $notVisibleFoods = Food::where('is_visible', 0)->get();
-        return view('dashboard', compact('foods', 'notVisibleFoods'));
+        $foods = Food::where('restaurant_id', $restaurant_id)->where('is_visible', 1)->get();
+        $not_visible_foods = Food::where('restaurant_id', $restaurant_id)->where('is_visible', 0)->get();
+        return view('dashboard', compact('foods', 'not_visible_foods'));
     }
 
     /**
@@ -31,16 +31,13 @@ class FoodController extends Controller
         return view('foods.create');
     }
 
-
-    /**
-     * 
+    /** 
      * Display the specified resource.
      * */
     public function show(Food $food)
     {
         return view('foods.show', compact('food'));
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -53,7 +50,7 @@ class FoodController extends Controller
 
         $data['restaurant_id'] = $restaurantId;
 
-        $new_food = new Food;
+        $new_food = new Food();
         $new_food->fill($data);
 
         if ($request->hasFile('img')) {
