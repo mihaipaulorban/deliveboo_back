@@ -46,9 +46,9 @@ class FoodController extends Controller
     {
         $data = $request->validated();
 
-        $restaurantId = Auth::user()->restaurant->id;
+        $restaurant_id = Auth::user()->restaurant->id;
 
-        $data['restaurant_id'] = $restaurantId;
+        $data['restaurant_id'] = $restaurant_id;
 
         $new_food = new Food();
         $new_food->fill($data);
