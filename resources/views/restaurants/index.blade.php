@@ -4,15 +4,14 @@
     @include('partials.session_message')
     <div class="container">
 
-        <h1>My restaurants</h1>
+        <h1>My restaurant</h1>
         <ul>
             @foreach ($restaurants as $restaurant)
                 <li class="list-unstyled">
-                    <a href="{{ route('admin.restaurants.index', $restaurant) }}">
-                        <h2 class="mt-3">{{ $restaurant->name }}</h2>
-                    </a>
-                    <p>{{ $restaurant->address }}</p>
-                    <p>Partita IVA: {{ $restaurant->p_iva }}</p>
+                    <h2 class="mt-3">{{ $restaurant->name }}</h2>
+                    <p>Address: {{ $restaurant->address }}</p>
+                    <p>VAT Number: {{ $restaurant->p_iva }}</p>
+                    <span>Categories:</span>
                     @foreach ($restaurant->types as $type)
                         <span>{{ $type->name }}</span>
                     @endforeach
