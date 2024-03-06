@@ -115,8 +115,7 @@
                                 <div class="col-md-6">
                                     <input id="p_iva" type="text"
                                         class="form-control @error('p_iva') is-invalid @enderror" name="p_iva"
-                                        value="{{ old('p_iva') }}" required maxlength="11"
-                                        autocomplete="p_iva">
+                                        value="{{ old('p_iva') }}" required minlength="11" maxlength="11" autocomplete="p_iva">
 
                                     @error('p_iva')
                                         <span class="invalid-feedback" role="alert">
@@ -130,19 +129,20 @@
                                 <p>Restaurant Types:</p>
                                 <div class="row">
                                     @foreach ($restaurants_type as $type)
-                                            <div class="col-md-4">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="{{ $type->id }}"
-                                                        id="{{ $type->id }}" name="restaurant_types[]">
-                                                    <label class="form-check-label" for="{{ $type->id }}">
-                                                        {{ $type->name }}
-                                                    </label>
-                                                </div>
-                                            </div>    
+                                        <div class="col-md-4">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="{{ $type->id }}"
+                                                    id="{{ $type->id }}" name="restaurant_types[]"
+                                                    @if (is_array(old('restaurant_types')) && in_array($type->id, old('restaurant_types'))) checked @endif>
+                                                <label class="form-check-label" for="{{ $type->id }}">
+                                                    {{ $type->name }}
+                                                </label>
+                                            </div>
+                                        </div>
                                     @endforeach
-                                 </div>
+                                </div>
                                 <p class="fw-bolder mt-3">
-                                    Select at least one field 
+                                    Select at least one field
                                 </p>
                             </div>
 
