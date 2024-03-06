@@ -2,25 +2,34 @@
 
 @section('content')
     <div class="container mt-4 vh-100">
-        {{-- Titolo --}}
-        <h2>Food items</h2>
 
-        {{-- Messaggio di conferma --}}
+        {{-- Toast per creazione / eliminazione / modifica piatto --}}
         @if (session('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
+            <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <strong class="me-auto">Notifica</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        {{ session('message') }}
+                    </div>
+                </div>
             </div>
         @endif
+
+        {{-- Titolo --}}
+        <h2>Food items</h2>
 
         {{-- Pulsante crea nuovo cibo --}}
         <a href="{{ route('admin.foods.create') }}" class="hoverable btn btn-success my-4">
             Add a new food item <i class="fa-solid fa-plus"></i>
         </a>
 
-
         {{-- Tabella Piatti Visibili --}}
         @if ($foods->isNotEmpty())
             <table class="table table-borderless table-hover">
+
                 {{-- Intestazione --}}
                 <thead>
                     <tr>
@@ -34,6 +43,7 @@
 
                     </tr>
                 </thead>
+
                 {{-- Corpo --}}
                 <tbody>
                     @foreach ($foods as $food)
@@ -44,7 +54,6 @@
                             <td>{{ $food->name }}</td>
                             {{-- Prezzo --}}
                             <td>€{{ $food->price }}</td>
-
                             {{-- Descrizione --}}
                             <td>{{ $food->description }}</td>
                             {{-- Visualizza --}}
