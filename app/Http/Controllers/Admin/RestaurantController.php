@@ -15,13 +15,12 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        //$restaurants = Restaurant::all();
         // Recupero l'utente loggato
         $user = auth()->user();
-        // Recupero i ristoranti che hanno quel determinato id corrispondete all'id loggato
-        $restaurants = Restaurant::where('user_id', $user->id)->get();
-        // Restituisci i risturanti filtrati alla vista
-        return view('restaurants.index', compact('restaurants'));
+        // Recupero il primo ristorante che ha quel determinato id corrispondete all'id loggato
+        $restaurant = Restaurant::where('user_id', $user->id)->first();
+        // Restituisci il risturante filtrato alla vista
+        return view('restaurants.index', compact('restaurant'));
     }
 
     /**
