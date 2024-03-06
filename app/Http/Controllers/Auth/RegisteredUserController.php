@@ -33,6 +33,10 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        if ($request->restaurant_types === null) {
+            $request['restaurant_types'] = [];
+        }
+
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -52,7 +56,6 @@ class RegisteredUserController extends Controller
 
         // Salvo l'utente che ho creato
         $user->save();
-
 
         // Creo il ristorante
         $restaurant = Restaurant::create([

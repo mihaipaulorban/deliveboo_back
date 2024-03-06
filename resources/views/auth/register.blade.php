@@ -12,6 +12,7 @@
                             @csrf
 
                             <div class="mb-4 row">
+                                <p class="text-danger fs-6">Fields with a * must be filled in</p>
                                 <label for="name"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -64,7 +65,7 @@
 
                             <div class="mb-4 row">
                                 <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}<strong>*</strong></label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
@@ -134,7 +135,7 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value="{{ $type->id }}"
                                                     id="{{ $type->id }}" name="restaurant_types[]"
-                                                    @if (is_array(old('restaurant_types')) && in_array($type->id, old('restaurant_types'))) checked @endif>
+                                                    {{ in_array($type->id, old('restaurant_types', [])) ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="{{ $type->id }}">
                                                     {{ $type->name }}
                                                 </label>
@@ -147,15 +148,12 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <p class="fw-bolder mt-3">
+                                <em style="display: inline-block;" class="mt-3">
                                     Select at least one field
-                                </p>
+                                </em>
                             </div>
 
-                            <p class="fw-bolder text-danger text-center fs-5">Fields with a "*" must be filled in</p>
-
                             <!-- Fine nuovi campi per il ristorante -->
-
                             <div class="mb-4 row mt-4 justify-content-center ">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
