@@ -59,7 +59,7 @@ class FoodController extends Controller
 
         $new_food->save();
 
-        return redirect()->route('admin.foods.index')->with('message', 'Food item added successfully.');
+        return redirect()->route('admin.foods.index')->with('message', "Il piatto: \"$new_food->name\" è stato aggiunto correttamente!");
     }
 
     /**
@@ -87,7 +87,7 @@ class FoodController extends Controller
 
         $food->update($data);
 
-        return redirect()->route('admin.foods.index')->with('message', 'Piatto aggiornato correttamente');
+        return redirect()->route('admin.foods.index')->with('message', "Il piatto: \"$food->name\" è stato aggiornato correttamente!");
     }
 
     /**
@@ -102,6 +102,6 @@ class FoodController extends Controller
 
         $food->delete();
 
-        return redirect()->route('admin.foods.index')->with('message', 'Piatto cancellato correttamente');
+        return redirect()->route('admin.foods.index')->with('message', "Il piatto: \"$food->name\" è stato eliminato!");
     }
 }
