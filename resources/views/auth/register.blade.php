@@ -129,6 +129,9 @@
 
                             <div>
                                 <p>Restaurant Types:</p>
+                                <em style="display: inline-block; font-size: 12px" class="my-1">
+                                    Select at least one field
+                                </em>
                                 <div class="row">
                                     @foreach ($restaurants_type as $type)
                                         <div class="col-md-4">
@@ -143,14 +146,11 @@
                                         </div>
                                     @endforeach
                                     @error('restaurant_types')
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="text-danger" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
-                                <em style="display: inline-block;" class="mt-3">
-                                    Select at least one field
-                                </em>
                             </div>
 
                             <!-- Fine nuovi campi per il ristorante -->
