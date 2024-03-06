@@ -10,7 +10,7 @@
                 <label class="form-label">
                     <h2>Food name *</h2>
                 </label>
-                <input type="text" class="form-control" name="name" @error('name') is-invalid @enderror
+                <input type="text" class="form-control" name="name" @error('name') is-invalid @enderror required minlength="3"
                     value="{{ old('name', $food->name) }}">
                 @error('name')
                     <div class="alert alert-danger mt-1">{{ $message }}</div>
@@ -20,7 +20,7 @@
                 <label class="form-label">
                     <h3>Food Description *</h3>
                 </label>
-                <textarea class="form-control" rows="3" @error('description') is-invalid @enderror name="description">{{ old('description', $food->description) }}</textarea>
+                <textarea class="form-control" rows="3" @error('description') is-invalid @enderror name="description" required>{{ old('description', $food->description) }}</textarea>
                 @error('description')
                     <div class="alert alert-danger mt-1">{{ $message }}</div>
                 @enderror
@@ -32,7 +32,7 @@
                 </label>
                 <div class="input-group mb-3">
                     <span class="input-group-text">€</span>
-                    <input type="text" class="form-control" name="price" aria-label="Amount (to the nearest euro)" value="{{ old('price', $food->price) }}">
+                    <input type="text" class="form-control" name="price" aria-label="Amount (to the nearest euro)" required maxlength="8" value="{{ old('price', $food->price) }}">
                 </div>
                 @error('price')
                     <div class="alert alert-danger">{{ $message }}</div>

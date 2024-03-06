@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mt-4">
+    <div class="container mt-4 ">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -30,7 +30,7 @@
 
                             <div class="mb-4 row">
                                 <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}<strong>*</strong></label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -47,12 +47,12 @@
 
                             <div class="mb-4 row">
                                 <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}<strong>*</strong></label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="new-password">
+                                        required autocomplete="new-password" minlength="8">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -75,7 +75,7 @@
                             <!-- Nuovi campi per il ristorante -->
                             <div class="mb-4 row">
                                 <label for="restaurant_name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Name') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Name') }}<strong>*</strong></label>
 
                                 <div class="col-md-6">
                                     <input id="restaurant_name" type="text"
@@ -93,7 +93,7 @@
 
                             <div class="mb-4 row">
                                 <label for="address"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Address') }}<strong>*</strong></label>
 
                                 <div class="col-md-6">
                                     <input id="address" type="text"
@@ -110,12 +110,13 @@
 
                             <div class="mb-4 row">
                                 <label for="p_iva"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('VAT number') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('VAT number') }}<strong>*</strong></label>
 
                                 <div class="col-md-6">
                                     <input id="p_iva" type="text"
                                         class="form-control @error('p_iva') is-invalid @enderror" name="p_iva"
-                                        value="{{ old('p_iva') }}" required autocomplete="p_iva">
+                                        value="{{ old('p_iva') }}" required maxlength="11"
+                                        autocomplete="p_iva">
 
                                     @error('p_iva')
                                         <span class="invalid-feedback" role="alert">
@@ -125,19 +126,31 @@
                                 </div>
                             </div>
 
-                            @foreach ($restaurants_type as $type)
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="{{ $type->id }}"
-                                        id="{{ $type->id }}" name="restaurant_types[]">
-                                    <label class="form-check-label" for="{{ $type->id }}">
-                                        {{ $type->name }}
-                                    </label>
-                                </div>
-                            @endforeach
+                            <div>
+                                <p>Restaurant Types:</p>
+                                <div class="row">
+                                    @foreach ($restaurants_type as $type)
+                                            <div class="col-md-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="{{ $type->id }}"
+                                                        id="{{ $type->id }}" name="restaurant_types[]">
+                                                    <label class="form-check-label" for="{{ $type->id }}">
+                                                        {{ $type->name }}
+                                                    </label>
+                                                </div>
+                                            </div>    
+                                    @endforeach
+                                 </div>
+                                <p class="fw-bolder mt-3">
+                                    Select at least one field 
+                                </p>
+                            </div>
+
+                            <p class="fw-bolder text-danger text-center fs-5">Fields with a "*" must be filled in</p>
 
                             <!-- Fine nuovi campi per il ristorante -->
 
-                            <div class="mb-4 row mb-0">
+                            <div class="mb-4 row mt-4 justify-content-center ">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Register') }}

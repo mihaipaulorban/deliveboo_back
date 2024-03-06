@@ -7,25 +7,25 @@
             <h1 class="text-center">Create a new food</h1>
             <div class="mb-3">
                 <label class="form-label">
-                    <h2>Food Name</h2>
+                    <h2>Food Name<strong>*</strong></h2>
                 </label>
-                <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                <input type="text" class="form-control" name="name" required minlength="3" value="{{ old('name') }}">
                 @error('name')
                     <div class="alert alert-danger mt-1">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
                 <label class="form-label">
-                    <h3>Food Description</h3>
+                    <h3>Food Description <strong>*</strong></h3>
                 </label>
-                <textarea class="form-control" rows="3" name="description">{{ old('description') }}</textarea>
+                <textarea class="form-control" rows="3" name="description" required >{{ old('description') }}</textarea>
                 @error('description')
                     <div class="alert alert-danger mt-1">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
                 <label class="form-label">
-                    <h3>Food Image</h3>
+                    <h3>Food Image<strong>*</strong></h3>
                 </label>
                 <input class="form-control" type="file" id="img" name="img">
                 @error('img')
@@ -34,11 +34,11 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">
-                    <h3>Price</h3>
+                    <h3>Price<strong>*</strong></h3>
                 </label>
                 <div class="input-group mb-3">
                     <span class="input-group-text">€</span>
-                    <input type="text" class="form-control" name="price" aria-label="Amount (to the nearest euro)"
+                    <input type="text" class="form-control" name="price" aria-label="Amount (to the nearest euro)" required maxlength="8"
                         value="{{ old('price') }}">
                 </div>
                 @error('price')
@@ -72,11 +72,11 @@
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="is_visible" id="visible_yes" value="1"
                         checked>
-                    <label class="form-check-label" for="vegetarian_yes">Yes</label>
+                   <label class="form-check-label" for="visible_yes">Yes</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="is_visible" id="visible_no" value="0">
-                    <label class="form-check-label" for="vegetarian_no">No</label>
+                    <label class="form-check-label" for="visible_no">No</label>
                 </div>
                 @error('is_visible')
                     <div class="alert alert-danger mt-1">{{ $message }}</div>
