@@ -8,18 +8,20 @@
                     <div class="card-header">{{ __('Register') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form id="registration-form" method="POST" action="{{ route('register') }}">
                             @csrf
 
                             <div class="mb-4 row">
                                 <p class="text-danger fs-6">Fields with a * must be filled in</p>
                                 <label for="name"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Name') }}<strong>*</strong></label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                        value="{{ old('name') }}" autocomplete="name" autofocus>
+                                    <strong id="nameError" class="text-danger error" style="font-size: 0.875em;"
+                                        role="alert"></strong>
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -36,7 +38,9 @@
                                 <div class="col-md-6">
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email">
+                                        value="{{ old('email') }}" autocomplete="email">
+                                    <strong id="emailError" class="text-danger error" style="font-size: 0.875em;"
+                                        role="alert"></strong>
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -53,7 +57,9 @@
                                 <div class="col-md-6">
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="new-password" minlength="8">
+                                        autocomplete="new-password">
+                                    <strong id="passwordError" class="text-danger error" style="font-size: 0.875em;"
+                                        role="alert"></strong>
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -69,7 +75,9 @@
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
-                                        name="password_confirmation" required autocomplete="new-password">
+                                        name="password_confirmation" autocomplete="new-password">
+                                    <strong id="passwordError" class="text-danger error" style="font-size: 0.875em;"
+                                        role="alert"></strong>
                                 </div>
                             </div>
 
@@ -81,8 +89,10 @@
                                 <div class="col-md-6">
                                     <input id="restaurant_name" type="text"
                                         class="form-control @error('restaurant_name') is-invalid @enderror"
-                                        name="restaurant_name" value="{{ old('restaurant_name') }}" required
+                                        name="restaurant_name" value="{{ old('restaurant_name') }}"
                                         autocomplete="restaurant_name" autofocus>
+                                    <strong id="restaurantNameError" class="text-danger error" style="font-size: 0.875em;"
+                                        role="alert"></strong>
 
                                     @error('restaurant_name')
                                         <span class="invalid-feedback" role="alert">
@@ -99,7 +109,9 @@
                                 <div class="col-md-6">
                                     <input id="address" type="text"
                                         class="form-control @error('address') is-invalid @enderror" name="address"
-                                        value="{{ old('address') }}" required autocomplete="address">
+                                        value="{{ old('address') }}" autocomplete="address">
+                                    <strong id="addressError" class="text-danger error" style="font-size: 0.875em;"
+                                        role="alert"></strong>
 
                                     @error('address')
                                         <span class="invalid-feedback" role="alert">
@@ -116,8 +128,9 @@
                                 <div class="col-md-6">
                                     <input id="p_iva" type="text"
                                         class="form-control @error('p_iva') is-invalid @enderror" name="p_iva"
-                                        value="{{ old('p_iva') }}" required minlength="11" maxlength="11"
-                                        autocomplete="p_iva">
+                                        value="{{ old('p_iva') }}" autocomplete="p_iva" maxlength="11">
+                                    <strong id="pIvaError" class="text-danger error" style="font-size: 0.875em;"
+                                        role="alert"></strong>
 
                                     @error('p_iva')
                                         <span class="invalid-feedback" role="alert">
@@ -133,30 +146,35 @@
                                     Select at least one field
                                 </em>
                                 <div class="row">
-                                    @foreach ($restaurants_type as $type)
-                                        <div class="col-md-4">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="{{ $type->id }}"
-                                                    id="{{ $type->id }}" name="restaurant_types[]"
-                                                    {{ in_array($type->id, old('restaurant_types', [])) ? 'checked' : '' }}>
-                                                <label class="form-check-label" for="{{ $type->id }}">
-                                                    {{ $type->name }}
-                                                </label>
+                                    <div id="checkboxContainer" class="d-flex flex-wrap">
+                                        @foreach ($restaurants_type as $type)
+                                            <div class="col-md-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox"
+                                                        value="{{ $type->id }}" id="{{ $type->id }}"
+                                                        name="restaurant_types[]"
+                                                        {{ in_array($type->id, old('restaurant_types', [])) ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="{{ $type->id }}">
+                                                        {{ $type->name }}
+                                                    </label>
+                                                </div>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                    </div>
                                     @error('restaurant_types')
-                                        <span class="text-danger" role="alert">
+                                        <span style="font-size: 0.875em;" class="text-danger" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                    <strong id="restaurant_types" class="text-danger error" style="font-size: 0.875em;"
+                                        role="alert"></strong>
                                 </div>
                             </div>
 
                             <!-- Fine nuovi campi per il ristorante -->
                             <div class="mb-4 row mt-4 justify-content-center ">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="button" class="btn btn-primary" onclick="validateForm()">
                                         {{ __('Register') }}
                                     </button>
                                 </div>
