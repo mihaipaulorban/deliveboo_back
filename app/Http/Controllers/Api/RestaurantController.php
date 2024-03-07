@@ -17,10 +17,12 @@ class RestaurantController extends Controller
             $types = explode(',', $request->types);
             $types = array_map('trim', $types); // Rimuovi spazi extra intorno ai nomi dei tipi
 
-            // Filtra i ristoranti in base ai tipi forniti
-            $query->whereHas('types', function ($query) use ($types) {
-                $query->whereIn('name', $types);
-            });
+            // Aggiungi vincolo per ciascun tipo
+            foreach ($types as $type) {
+                $query->whereHas('types', function ($query) use ($type) {
+                    $query->where('name', $type);
+                });
+            }
         }
 
         // Esegui la query e restituisci i risultati paginati
