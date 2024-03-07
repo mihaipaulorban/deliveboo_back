@@ -16,7 +16,7 @@ class RestaurantTypesSeeder extends Seeder
         $types = [
             ['name' => 'Italian', 'img' => './storage/typeimg/italian.png'],
             ['name' => 'French', 'img' => './storage/typeimg/french.png'],
-            ['name' => 'Barbecue', 'img' => './storage/barbecue.png'],
+            ['name' => 'Barbecue', 'img' => './storage/typeimg/barbecue.png'],
             ['name' => 'Chinese', 'img' => './storage/typeimg/chinese.png'],
             ['name' => 'Sushi', 'img' => './storage/typeimg/sushi.png'],
             ['name' => 'Thai', 'img' => './storage/typeimg/thai.png'],
