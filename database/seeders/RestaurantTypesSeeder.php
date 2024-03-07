@@ -14,15 +14,15 @@ class RestaurantTypesSeeder extends Seeder
     public function run(): void
     {
         $types = [
-            ['name' => 'Italian', 'img' => '../typeimg/italian.png'],
-            ['name' => 'French', 'img' => '../typeimg/french.png'],
-            ['name' => 'Barbecue', 'img' => '../typeimg/barbecue.png'],
-            ['name' => 'Chinese', 'img' => '../typeimg/chinese.png'],
-            ['name' => 'Sushi', 'img' => '../typeimg/sushi.png'],
-            ['name' => 'Thai', 'img' => '../typeimg/thai.png'],
-            ['name' => 'Greek', 'img' => '../typeimg/greek.png'],
-            ['name' => 'Romanian', 'img' => '../typeimg/romanian'],
-            ['name' => 'North African', 'img' => '../typeimg/northafrican'],
+            ['name' => 'Italian', 'img' => './storage/app/public/typeimg/italian.png'],
+            ['name' => 'French', 'img' => './storage/app/public/typeimg/french.png'],
+            ['name' => 'Barbecue', 'img' => './storage/app/public/typeimg/barbecue.png'],
+            ['name' => 'Chinese', 'img' => './storage/app/public/typeimg/chinese.png'],
+            ['name' => 'Sushi', 'img' => './storage/app/public/typeimg/sushi.png'],
+            ['name' => 'Thai', 'img' => './storage/app/public/typeimg/thai.png'],
+            ['name' => 'Greek', 'img' => './storage/app/public/typeimg/greek.png'],
+            ['name' => 'Romanian', 'img' => './storage/app/public/typeimg/romanian'],
+            ['name' => 'North African', 'img' => './storage/app/public/typeimg/northafrican'],
         ];
         foreach ($types as $type) {
             $new_type = new Type();
