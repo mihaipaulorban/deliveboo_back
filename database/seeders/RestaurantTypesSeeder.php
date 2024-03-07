@@ -14,15 +14,15 @@ class RestaurantTypesSeeder extends Seeder
     public function run(): void
     {
         $types = [
-            ['name' => 'Italian', 'img' => 'image1'],
-            ['name' => 'French', 'img' => 'image2'],
-            ['name' => 'Barbecue', 'img' => 'image3'],
-            ['name' => 'Chinese', 'img' => 'image4'],
-            ['name' => 'Sushi', 'img' => 'image5'],
-            ['name' => 'Thai', 'img' => 'image6'],
-            ['name' => 'Greek', 'img' => 'image7'],
-            ['name' => 'Romanian', 'img' => 'image8'],
-            ['name' => 'North African', 'img' => 'image9'],
+            ['name' => 'Italian', 'img' => '../typeimg/italian.png'],
+            ['name' => 'French', 'img' => '../typeimg/french.png'],
+            ['name' => 'Barbecue', 'img' => '../typeimg/barbecue.png'],
+            ['name' => 'Chinese', 'img' => '../typeimg/chinese.png'],
+            ['name' => 'Sushi', 'img' => '../typeimg/sushi.png'],
+            ['name' => 'Thai', 'img' => '../typeimg/thai.png'],
+            ['name' => 'Greek', 'img' => '../typeimg/greek.png'],
+            ['name' => 'Romanian', 'img' => '../typeimg/romanian'],
+            ['name' => 'North African', 'img' => '../typeimg/northafrican'],
         ];
         foreach ($types as $type) {
             $new_type = new Type();
