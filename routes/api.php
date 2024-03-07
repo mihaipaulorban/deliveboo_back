@@ -21,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('restaurants', [\App\Http\Controllers\Api\RestaurantController::class, 'index']);
 Route::get('restaurants/{slug}', [\App\Http\Controllers\Api\RestaurantController::class, 'show']);
 
+
+Route::get('types', [\App\Http\Controllers\Api\TypeController::class, 'index']);
