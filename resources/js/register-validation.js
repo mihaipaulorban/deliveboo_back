@@ -24,7 +24,7 @@ window.validateForm = function () {
 
     if (!atLeastOneChecked) {
         document.getElementById("restaurant_types").innerText =
-            "Seleziona almeno una tipologia di ristorante.";
+            "Select at least one restaurant type.";
     } else {
         check++;
     }
@@ -32,7 +32,7 @@ window.validateForm = function () {
     // Controlla se il campo name è vuoto
     if (!name.trim()) {
         document.getElementById("nameError").innerText =
-            "Il campo name è obbligatorio.";
+            "The name field is required.";
     } else {
         check++;
     }
@@ -40,7 +40,7 @@ window.validateForm = function () {
     // Controlla se il campo name è vuoto
     if (!email.trim()) {
         document.getElementById("emailError").innerText =
-            "Il campo email è obbligatorio.";
+            "The email field is required.";
     } else {
         check++;
     }
@@ -48,7 +48,7 @@ window.validateForm = function () {
     // Controlla se il campo name è vuoto
     if (!restaurant_name.trim()) {
         document.getElementById("restaurantNameError").innerText =
-            "Il campo restaurant name è obbligatorio.";
+            "The restaurant name field is required.";
     } else {
         check++;
     }
@@ -56,7 +56,7 @@ window.validateForm = function () {
     // Controlla se il campo name è vuoto
     if (!address.trim()) {
         document.getElementById("addressError").innerText =
-            "Il campo address è obbligatorio.";
+            "The address field is required.";
     } else {
         check++;
     }
@@ -64,7 +64,7 @@ window.validateForm = function () {
     // Controlla se il campo p_iva è vuoto
     if (!pIva.trim()) {
         document.getElementById("pIvaError").innerText =
-            "Il campo VAT number è obbligatorio.";
+            "The VAT number field is required.";
     } else {
         check++;
     }
@@ -72,17 +72,17 @@ window.validateForm = function () {
     // Effettua la validazione della lunghezza del campo p_iva
     if (pIva.length !== 11) {
         document.getElementById("pIvaError").innerText =
-            "Il campo VAT number deve essere lungo 11 caratteri.";
+            "The VAT NUmber field must contain exactly 11 numbers.";
     } else {
         check++;
     }
 
     if (password !== confirmPassword) {
         document.getElementById("passwordError").innerText =
-            "Le password non corrispondono.";
+            "The password do not match.";
     } else if (password.length < 8 || password.length > 16) {
         document.getElementById("passwordError").innerText =
-            "La password deve contenere tra 8 e 16 caratteri.";
+            "Your password must contain between 8 and 16 characters.";
     } else {
         check++;
     }

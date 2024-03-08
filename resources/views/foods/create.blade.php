@@ -92,7 +92,7 @@
                 @enderror
             </div>
 
-            <button type="button" class="btn btn-success" onclick="foodsValidation()">Submit</button>
+            <button type="button" class="btn btn-success" onclick="foodsValidation()">Create</button>
         </form>
         <div>
             <a class="btn btn-secondary my-3" href="{{ route('admin.foods.index') }}">Go back to foods list</a>

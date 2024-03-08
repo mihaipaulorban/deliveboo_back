@@ -15,7 +15,7 @@ window.foodsValidation = function () {
 
     // Controlla se il campo name è vuoto
     if (!name.trim()) {
-        document.getElementById("nameError").innerText = "Inserisci un nome.";
+        document.getElementById("nameError").innerText = "Please insert your item name.";
     } else {
         check++;
     }
@@ -23,7 +23,7 @@ window.foodsValidation = function () {
     // Controlla se il campo description è vuoto
     if (!description.trim()) {
         document.getElementById("descriptionError").innerText =
-            "Inserisci una descrizione.";
+            "Please enter a description of the item.";
     } else {
         check++;
     }
@@ -31,7 +31,7 @@ window.foodsValidation = function () {
     // Controlla se il campo image è vuoto
     if (!file) {
         document.getElementById("fileError").innerText =
-            "Inserisci un'immagine.";
+            "Please insert an image for your item.";
     } else {
         check++;
     }
@@ -39,7 +39,7 @@ window.foodsValidation = function () {
     // Controlla se il campo price è vuoto
     if (!price.trim()) {
         document.getElementById("priceError").innerText =
-            "Seleziona un prezzo.";
+            "Please enter a price in this format: 99.00.";
     } else {
         check++;
     }
@@ -47,7 +47,7 @@ window.foodsValidation = function () {
     // Controlla se il campo is_vegetarian è vuoto
     if (!vegetarian_yes && !vegetarian_no) {
         document.getElementById("is_vegetarianError").innerText =
-            "Indica se il cibo è vegetariano o no.";
+            "Please specify if the dish is vegetarian or not.";
     } else {
         check++;
     }
@@ -55,7 +55,7 @@ window.foodsValidation = function () {
     // Controlla se il campo is_visible è vuoto
     if (!visible_yes && !visible_no) {
         document.getElementById("is_visibleError").innerText =
-            "Indica se il cibo deve essere visibile o no.";
+            "Please tell us if the dish is visible in your listing.";
     } else {
         check++;
     }
