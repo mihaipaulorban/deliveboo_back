@@ -15,7 +15,8 @@ window.foodsValidation = function () {
 
     // Controlla se il campo name è vuoto
     if (!name.trim()) {
-        document.getElementById("nameError").innerText = "Please insert your item name.";
+        document.getElementById("nameError").innerText =
+            "Please insert your item name.";
     } else {
         check++;
     }
@@ -36,10 +37,10 @@ window.foodsValidation = function () {
         check++;
     }
 
-    // Controlla se il campo price è vuoto
-    if (!price.trim()) {
+    // Controlla se il campo price è vuoto o negativo
+    if (!price.trim() || parseFloat(price) < 0) {
         document.getElementById("priceError").innerText =
-            "Please enter a price in this format: 99.00.";
+            "Please enter a price in this format: ##.##.";
     } else {
         check++;
     }
