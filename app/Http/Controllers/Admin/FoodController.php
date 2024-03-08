@@ -19,9 +19,9 @@ class FoodController extends Controller
     {
         $restaurant_id = Auth::user()->restaurant->id;
 
-        $foods = Food::where('restaurant_id', $restaurant_id)->where('is_visible', 1)->get();
-        $not_visible_foods = Food::where('restaurant_id', $restaurant_id)->where('is_visible', 0)->get();
-        return view('dashboard', compact('foods', 'not_visible_foods'));
+        $foods = Food::where('restaurant_id', $restaurant_id)->get();
+        // $not_visible_foods = Food::where('restaurant_id', $restaurant_id)->where('is_visible', 0)->get();
+        return view('dashboard', compact('foods'));
     }
 
     /**
@@ -35,10 +35,10 @@ class FoodController extends Controller
     /** 
      * Display the specified resource.
      * */
-    public function show(Food $food)
-    {
-        return view('foods.show', compact('food'));
-    }
+    // public function show(Food $food)
+    // {
+    //     return view('foods.show', compact('food'));
+    // }
 
     /**
      * Store a newly created resource in storage.
