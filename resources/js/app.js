@@ -6,3 +6,4 @@ import.meta.glob(["../img/**"]);
 import "./register-validation";
 import "./foods-validation";
 import "./food-edit-validation";
+import "./component";
