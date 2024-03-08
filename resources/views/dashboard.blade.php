@@ -48,7 +48,7 @@
                     @foreach ($foods as $food)
                    
                         <tr>
-                            <td class="w-25">  
+                            <td class="w-team">  
                                 <div class="rounded-img d-flex align-items-center"> 
                                     <img src="{{ asset('storage/' . $food->img) }}" alt="" class="">
                                 </div>
@@ -56,7 +56,7 @@
                             </td>
 
 
-                            <td class=""> 
+                            <td> 
                                
                                 @if ($food->is_visible == 1)
 
