@@ -90,31 +90,34 @@
                                     @method('DELETE')
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-danger hoverable rounded" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">
+                                        data-bs-target="#id-{{ $food->id }}">
                                         <i class="fa fa-trash-alt "></i>
                                     </button>
                                     <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    <div class="modal fade" id="id-{{ $food->id }}" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Delete confirmation
+                                                    </h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
-                                                    Are you sure you want to delete this dish?
+                                                <div class="modal-body text-start">
+                                                    Are you sure you want to delete the dish: {{ $food->name }}?
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <button type="submit"
+                                                        class="btn btn-danger hoverable rounded">Delete</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
+
                             </td>
                         </tr>
                     @endforeach
