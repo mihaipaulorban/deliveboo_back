@@ -29,7 +29,8 @@ td {
 .rounded-img {
     width: 150px;
     height: 150px;
-    object-position: center center;
+    overflow: hidden;
+    border-radius: 50%;
     img {
         width: 100%;
     }
