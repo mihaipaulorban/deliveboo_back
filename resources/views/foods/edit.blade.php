@@ -108,9 +108,7 @@
             <button type="button" class="btn btn-success" onclick="foodEditValidation()">Save</button>
         </form>
         <div>
-            <a class="btn btn-secondary my-3" href="{{ route('admin.foods.show', $food) }}">Go back to single food</a>
-            <br>
-            <a class="btn btn-secondary mb-3" href="{{ route('admin.foods.index') }}">Go back to foods list</a>
+            <a class="btn btn-secondary my-2" href="{{ route('admin.foods.index') }}">Go back to foods list</a>
         </div>
     </div>
 @endsection
