@@ -24,4 +24,6 @@ Route::get('restaurants/{slug}', [\App\Http\Controllers\Api\RestaurantController
 
 Route::get('types', [\App\Http\Controllers\Api\TypeController::class, 'index']);
 
-Route::post('/api/orders', [\App\Http\Controllers\Api\OrdersController::class, 'index'])->name('payment.process');
+// Rotte per gli ordini
+Route::middleware('auth:sanctum')->post('orders', [\App\Http\Controllers\Admin\OrdersController::class, 'store'])->name('orders.store');
+// Crea un nuovo ordine per l'utente autenticato
