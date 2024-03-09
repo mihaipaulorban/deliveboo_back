@@ -37,7 +37,7 @@ class OrdersController extends Controller
         // $nonce = $request->input('nonce');
 
         $order = new Order();
-        $order->restaurant_id = $request->restaurant_id; // Assumi che il ristorante venga passato dal frontend
+        $order->restaurant_id = $request->restaurant_id;
         $order->guest_firstname = $request->guest_firstname;
         $order->guest_surname = $request->guest_surname;
         $order->guest_address = $request->guest_address;
