@@ -23,3 +23,5 @@ Route::get('restaurants/{slug}', [\App\Http\Controllers\Api\RestaurantController
 
 
 Route::get('types', [\App\Http\Controllers\Api\TypeController::class, 'index']);
+
+Route::post('/api/orders', [\App\Http\Controllers\Api\OrdersController::class, 'index'])->name('payment.process');
