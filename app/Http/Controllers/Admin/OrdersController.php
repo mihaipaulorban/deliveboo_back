@@ -18,11 +18,17 @@ class OrdersController extends Controller
         // Recupera il ristorante associato all'utente autenticato
         $restaurant = $user->restaurant;
 
-        // Recupera gli ordini associati al ristorante dell'utente autenticato
-        $orders = $restaurant->orders;
+        // Verifica se l'utente ha un ristorante associato
+        if ($restaurant) {
+            // Recupera gli ordini associati al ristorante dell'utente autenticato
+            $orders = $restaurant->orders()->orderBy('created_at', 'desc')->get();
 
-        // Mostra la vista degli ordini dell'utente autenticato
-        return view('orders.index', compact('orders'));
+            // Mostra la vista degli ordini dell'utente autenticato
+            return view('orders.index', compact('orders'));
+        } else {
+            // Se l'utente non ha un ristorante associato, mostra un messaggio di errore o reindirizzalo
+            return redirect()->route('home')->with('error', 'Non hai un ristorante associato.');
+        }
     }
 
     public function store(Request $request)
