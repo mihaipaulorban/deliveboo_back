@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Food;
 use App\Models\Order;
 use Braintree\Gateway;
+use Illuminate\Database\Eloquent\Concerns\HasTimestamps;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class OrdersController extends Controller
 {
+    use HasTimestamps;
 
     public function index()
     {
@@ -87,7 +89,7 @@ class OrdersController extends Controller
                         $food = Food::find($foodsId);
                         if ($food) {
                             // Associa il cibo all'ordine tramite la tabella pivot
-                            $new_order->foods()->attach($foodsId);
+                            $new_order->foods()->attach($foodsId, ['foods_id' => $foodsId, 'created_at' => now(), 'updated_at' => now()]);
                         }
                     }
                 }
