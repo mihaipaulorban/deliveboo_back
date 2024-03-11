@@ -5,9 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Braintree\Gateway;
-// use App\Models\Order;
-// use Braintree\Configuration;
-// use Braintree\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,20 +36,20 @@ class OrdersController extends Controller
     {
         // Inizializza il gateway Braintree utilizzando le credenziali dal file .env
         $gateway = new Gateway([
-            'environment' => 'sandbox',
-            'merchantId' => 'n2sddky376q9g4bt',
-            'publicKey' => 'hzywfmfwm9cmgzv8',
-            'privateKey' => '0e0b1ed42edddab64a0b919b8d6de505'
+            'environment' => config('braintree.environment'),
+            'merchantId' => config('braintree.merchantId'),
+            'publicKey' => config('braintree.publicKey'),
+            'privateKey' => config('braintree.privateKey'),
         ]);
 
         if ($request->input('nonce') != null) {
             $nonce = $request->input('nonce');
             $amount = $request->input('amount');
-            // $name = $request->input('guestName');
-            // $surname = $request->input('guestSurname');
-            // $address = $request->input('guestAddress');
-            // $phone = $request->input('guestPhone');
-            // $email = $request->input('guestEmail');
+            $name = $request->input('first_name');
+            $surname = $request->input('last_name');
+            $address = $request->input('address');
+            $phone = $request->input('phone');
+            $email = $request->input('email');
 
             // Elabora la transazione di pagamento utilizzando il nonce e l'importo
             $result = $gateway->transaction()->sale([
@@ -65,13 +62,13 @@ class OrdersController extends Controller
 
             // Controlla se la transazione è stata eseguita con successo
             if ($result->success) {
-                // $new_order = new Order();
-                // $new_order->name = $name;
-                // $new_order->surname = $surname;
-                // $new_order->address = $address;
-                // $new_order->phone = $phone;
-                // $new_order->email = $email;
-                // $new_order->save();
+                $new_order = new Order();
+                $new_order->guest_firstname = $name;
+                $new_order->guest_surname = $surname;
+                $new_order->guest_address = $address;
+                $new_order->guest_phone = $phone;
+                $new_order->email = $email;
+                $new_order->save();
 
                 // La transazione è stata elaborata con successo
                 return response()->json([
