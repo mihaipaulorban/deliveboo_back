@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Food;
 use App\Models\Order;
 use Braintree\Gateway;
 use Illuminate\Http\Request;
@@ -45,11 +46,6 @@ class OrdersController extends Controller
         if ($request->input('nonce') != null) {
             $nonce = $request->input('nonce');
             $amount = $request->input('amount');
-            $name = $request->input('first_name');
-            $surname = $request->input('last_name');
-            $address = $request->input('address');
-            $phone = $request->input('phone');
-            $email = $request->input('email');
 
             // Elabora la transazione di pagamento utilizzando il nonce e l'importo
             $result = $gateway->transaction()->sale([
@@ -62,13 +58,39 @@ class OrdersController extends Controller
 
             // Controlla se la transazione è stata eseguita con successo
             if ($result->success) {
+
+                $validatedData = $request->validate([
+                    'restaurant_id' => 'required',
+                    'first_name' => 'required|string|max:255',
+                    'last_name' => 'required|string|max:255',
+                    'address' => 'required|string',
+                    'phone' => 'required|string',
+                    'email' => 'required|email',
+                    'amount' => 'required|regex:/^\d{1,4}(\.\d{1,2})?$/',
+                    'foods_id' => 'array',
+                ]);
+
                 $new_order = new Order();
-                $new_order->guest_firstname = $name;
-                $new_order->guest_surname = $surname;
-                $new_order->guest_address = $address;
-                $new_order->guest_phone = $phone;
-                $new_order->email = $email;
+                $new_order->restaurant_id = $validatedData['restaurant_id'];
+                $new_order->guest_firstname = $validatedData['first_name'];
+                $new_order->guest_surname = $validatedData['last_name'];
+                $new_order->guest_address = $validatedData['address'];
+                $new_order->guest_phone = $validatedData['phone'];
+                $new_order->email = $validatedData['email'];
+                $new_order->total = $validatedData['amount'];
                 $new_order->save();
+
+                // Associare ciascun alimento all'ordine
+                if (isset($validatedData['foods_id']) && is_array($validatedData['foods_id'])) {
+                    foreach ($validatedData['foods_id'] as $foodsId) {
+                        // Verifica se il cibo esiste
+                        $food = Food::find($foodsId);
+                        if ($food) {
+                            // Associa il cibo all'ordine tramite la tabella pivot
+                            $new_order->foods()->attach($foodsId);
+                        }
+                    }
+                }
 
                 // La transazione è stata elaborata con successo
                 return response()->json([
