@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Admin\FoodController;
+use App\Http\Controllers\Admin\OrdersController;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\ProfileController;
 
@@ -31,6 +32,7 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
         Route::resource('foods', FoodController::class);
         Route::resource('restaurants', RestaurantController::class);
+        Route::get('orders', [OrdersController::class, 'index'])->name('orders');
     });
 
 require __DIR__ . '/auth.php';
