@@ -66,6 +66,12 @@
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Restaurants
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.orders') }}">
+                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Orders
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
