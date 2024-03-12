@@ -19,7 +19,7 @@
         @endif
 
         {{-- Titolo --}}
-        <h2>Food items ({{count($foods)}})</h2>
+        <h2>Food items ({{ count($foods) }})</h2>
 
         {{-- Pulsante crea nuovo cibo --}}
         <a href="{{ route('admin.foods.create') }}" class="hoverable btn btn-success my-4">
@@ -113,7 +113,6 @@
                                     </div>
                                 </div>
                             </form>
-
                         </td>
                     </tr>
                 @endforeach

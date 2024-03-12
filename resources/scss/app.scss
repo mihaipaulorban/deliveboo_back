@@ -4,6 +4,10 @@
 @import "welcome.scss";
 @import "register.scss";
 
+* {
+    box-sizing: border-box;
+}
+
 th,
 td {
     text-align: center;
@@ -50,14 +54,57 @@ form {
     color: #ffffff;
 }
 
+// header {
+//     height: 70px;
+// }
+
+// #sidebarMenu {
+//     height: calc(100vh - 70px);
+//     width: 200px;
+//     background-color: #343434;
+
+//     .nav-item {
+//         :hover {
+//             background-color: #ffffff3e;
+//         }
+
+//         a {
+//             color: white;
+//         }
+//     }
+
+//     border-radius: 0;
+//     // position: fixed;
+
+//     @media (max-width: 1200px) {
+//         padding: 30px;
+//     }
+
+//     // @media (max-width: 576px) {
+//     //     width: calc(100vw - 40px);
+//     // }
+
+//     @media (max-width: 768px) {
+//         width: 100vw;
+//         height: 150px;
+//         position: fixed;
+//         top: 70px;
+//     }
+// }
+
+// main {
+//     width: calc(
+//         100vw - 200px
+//     ); // Larghezza della finestra meno la larghezza della sidebar
+// }
+
 #sidebarMenu {
+    width: 200px;
     background-color: #343434;
-    border-radius: 50px;
-    height: 60%;
-    width: 10%;
-    padding: 30px 0;
-    margin-top: 60px;
-    margin-left: 20px;
+    overflow-y: auto; // Abilita lo scrolling se necessario
+    height: 100vh; // Imposta l'altezza al 100% dell'altezza dello schermo
+    position: sticky;
+    top: 70px; // Se l'header è alto 70px
 
     .nav-item {
         :hover {
@@ -67,5 +114,33 @@ form {
         a {
             color: white;
         }
+    }
+
+    border-radius: 0;
+    position: fixed;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        overflow-x: hidden; // Nasconde lo scrolling orizzontale se necessario
+        height: auto;
+        padding-bottom: 20px;
+    }
+}
+
+.navbar {
+    position: fixed;
+    background-color: #386641;
+    height: 70px;
+    top: 0;
+    width: 100%;
+    z-index: 1000; // Imposta un valore alto per la z-index per assicurarsi che la navbar sia sopra gli altri elementi
+}
+
+main {
+    margin-left: 200px;
+    padding-top: 70px;
+    min-height: auto;
+    @media (max-width: 768px) {
+        margin-left: 0;
     }
 }
