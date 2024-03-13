@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class RegisteredUserController extends Controller
@@ -33,6 +34,11 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+
+        /*     dd($request->all()); */
+        /*  dd($request->file('logo')); // Debug per il logo
+        dd($request->file('cover_img')); */
+
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -41,7 +47,10 @@ class RegisteredUserController extends Controller
             'address' => 'required|string|max:255',
             'p_iva' => 'required|string|max:11|unique:restaurants',
             'restaurant_types' => 'required|array|min:1|max:9',
+            'cover_img' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Aggiungi regole di validazione per l'immagine della copertina
+            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Aggiungi regole di validazione per il logo
         ]);
+
 
         // Creo l'utente associato al ristorante
         $user = new User([
@@ -54,7 +63,7 @@ class RegisteredUserController extends Controller
         $user->save();
 
         // Creo il ristorante
-        $restaurant = Restaurant::create([
+        $restaurant = new Restaurant([
             'name' => $request->restaurant_name,
             'address' => $request->address,
             'p_iva' => $request->p_iva,
@@ -62,11 +71,23 @@ class RegisteredUserController extends Controller
             'slug' => Str::of($request->restaurant_name)->slug('-')
         ]);
 
-        // Creo il food type
-        if (isset($request['restaurant_types'])) {
-            $restaurant->types()->sync($request['restaurant_types']);
-        };
+        // Salvo l'immagine di copertina se è stata fornita
+        if ($request->hasFile('cover_img')) {
+            $coverImgPath = $request->file('cover_img')->store('uploads');
+            $restaurant->cover_img = $coverImgPath;
+        }
+
+        // Salvo il logo se è stato fornito
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('uploads');
+            $restaurant->logo = $logoPath;
+        }
+
+
         $restaurant->save();
+
+        // Aggiungo i tipi del ristorante
+        $restaurant->types()->sync($request->restaurant_types);
 
         // Autentico l'utente nel sistema
         Auth::login($user);

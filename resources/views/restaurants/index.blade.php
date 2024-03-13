@@ -10,5 +10,8 @@
         @foreach ($restaurant->types as $type)
             <span>{{ $type->name }}</span>
         @endforeach
+        <img src="{{asset('storage/' . $restaurant->cover_img)}}" alt="{{$restaurant->slug}}">
+        <img src="{{asset('storage/' . $restaurant->logo)}}" alt="{{$restaurant->slug}}">
+
     </div>
 @endsection
