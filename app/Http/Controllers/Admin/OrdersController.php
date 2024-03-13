@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AdminMail;
 use App\Mail\CustomMail;
 use App\Models\Food;
 use App\Models\Order;
@@ -86,6 +87,8 @@ class OrdersController extends Controller
                 $new_order->save();
 
                 Mail::to($new_order->email)->send(new CustomMail($new_order));
+
+                Mail::to($new_order->restaurant->user->email)->send(new AdminMail($new_order));
 
 
                 // Associare ciascun alimento all'ordine
