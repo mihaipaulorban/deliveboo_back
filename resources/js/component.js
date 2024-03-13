@@ -1,5 +1,7 @@
 let myToastEl = document.getElementById("liveToast");
 
-setTimeout(function () {
-    myToastEl.classList.remove("show");
-}, 3000);
+if (myToastEl) {
+    setTimeout(function () {
+        myToastEl.classList.remove("show");
+    }, 3000);
+}
