@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\CustomMail;
 use App\Models\Food;
 use App\Models\Order;
 use Braintree\Gateway;
 use Illuminate\Database\Eloquent\Concerns\HasTimestamps;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class OrdersController extends Controller
 {
@@ -82,6 +85,9 @@ class OrdersController extends Controller
                 $new_order->total = $validatedData['amount'];
                 $new_order->save();
 
+                Mail::to($new_order->email)->send(new CustomMail($new_order));
+
+
                 // Associare ciascun alimento all'ordine
                 if (isset($validatedData['foods_id']) && is_array($validatedData['foods_id'])) {
                     foreach ($validatedData['foods_id'] as $foodsId) {
@@ -93,6 +99,7 @@ class OrdersController extends Controller
                         }
                     }
                 }
+
 
                 // La transazione è stata elaborata con successo
                 return response()->json([
