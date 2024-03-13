@@ -86,7 +86,9 @@ class OrdersController extends Controller
                 $new_order->total = $validatedData['amount'];
                 $new_order->save();
 
-                Mail::to($new_order->email)->send(new CustomMail($new_order));
+
+
+
 
                 Mail::to($new_order->restaurant->user->email)->send(new AdminMail($new_order));
 
@@ -94,6 +96,8 @@ class OrdersController extends Controller
                 // Associare ciascun alimento all'ordine
                 if (isset($validatedData['foods_id']) && is_array($validatedData['foods_id'])) {
                     foreach ($validatedData['foods_id'] as $foodsId) {
+                        $order = Order::with('foods')->find($foodsId); // Assuming you have defined the relationship 'foods' in the Order model
+                        $foodNames = $order->foods->pluck('name')->toArray();
                         // Verifica se il cibo esiste
                         $food = Food::find($foodsId);
                         if ($food) {
@@ -102,6 +106,8 @@ class OrdersController extends Controller
                         }
                     }
                 }
+
+                Mail::to($new_order->email)->send(new CustomMail($new_order, $foodNames));
 
 
                 // La transazione è stata elaborata con successo

@@ -5,6 +5,9 @@
         <p>Your order is on the way to you,please listen to your doorbell to receive your tasty food.</p>
         <p>Your food was sent to {{ $order->guest_address }}</p>
         <p>Your total was {{ $order->total }} Euros</p>
+        @foreach ($foodNames as $names)
+            <p>{{ $names }}</p>
+        @endforeach
         <p>Enjoy your food!</p>
         <div>Sincerely</div>
         <h3>THE DELIVEBOO TEAM</h3>
