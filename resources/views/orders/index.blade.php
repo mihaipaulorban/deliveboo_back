@@ -27,10 +27,10 @@
                         <tr>
                             <th scope="row">{{ $order->id }}</th>
                             <td>
-                                <p>{{ $order->guest_firstname }}</p>
+                                {{ $order->guest_firstname }}
                             </td>
                             <td>
-                                <p>{{ $order->guest_surname }}</p>
+                                {{ $order->guest_surname }}
                             </td>
                             <td>
                                 @php
