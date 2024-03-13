@@ -31,12 +31,12 @@ td {
 }
 
 .rounded-img {
-    width: 150px;
-    height: 150px;
+    width: 9.375rem;
+    height: 9.375rem;
     overflow: hidden;
     border-radius: 50%;
     img {
-        width: 100%;
+        max-width: 100%;
     }
 }
 
@@ -105,6 +105,7 @@ form {
     height: 100vh; // Imposta l'altezza al 100% dell'altezza dello schermo
     position: sticky;
     top: 70px; // Se l'header è alto 70px
+    left: 0;
 
     .nav-item {
         :hover {
@@ -137,10 +138,14 @@ form {
 }
 
 main {
-    margin-left: 200px;
-    padding-top: 70px;
-    min-height: auto;
+    position: absolute; // Cambia da fixed a absolute
+    top: 70px;
+    left: 200px;
+    right: 0;
+    bottom: 0; // Imposta il bordo inferiore a 0 per farlo espandere fino al fondo dello schermo
+
+    // Rimuovi i media queries ridondanti
     @media (max-width: 768px) {
-        margin-left: 0;
+        left: 0;
     }
 }
