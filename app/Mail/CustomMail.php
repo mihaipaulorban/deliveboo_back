@@ -14,15 +14,17 @@ class CustomMail extends Mailable
     use Queueable, SerializesModels;
 
     public $order;
-    // public $foodNames;
+    public $foodNames = [];
 
     /**
      * Create a new message instance.
      */
-    public function __construct($_order,)
+    public function __construct($_order)
     {
         $this->order = $_order;
-        // $this->foodNames = $foodNames;
+        foreach ($_order->foods as $food) {
+            array_push($this->foodNames, $food->name);
+        }
     }
 
     /**

@@ -87,12 +87,7 @@ class OrdersController extends Controller
                 $new_order->total = $validatedData['amount'];
                 $new_order->save();
 
-
-
-
-
                 Mail::to($new_order->restaurant->user->email)->send(new AdminMail($new_order));
-
 
                 // Associare ciascun alimento all'ordine
                 if (isset($validatedData['foods_id']) && is_array($validatedData['foods_id'])) {
@@ -109,7 +104,6 @@ class OrdersController extends Controller
                 }
 
                 Mail::to($new_order->email)->send(new CustomMail($new_order));
-
 
                 // La transazione è stata elaborata con successo
                 return response()->json([
