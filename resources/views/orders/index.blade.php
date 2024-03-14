@@ -10,60 +10,180 @@
                 <p class="card-text">{{ count($orders) }}</p>
             </div>
         </div>
-        <div class="table-responsive-lg">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Id order:</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Surname</th>
-                        <th scope="col">Foods</th>
-                        <th scope="col">Data</th>
-                        <th scope="col">Total €</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($orders as $order)
+        @if (count($orders) > 0)
+            {{-- <div class="row g-3">
+                @foreach ($orders as $index => $order)
+                    <h4>Ordine</h4>
+                    <div class="col-12 col-lg-4">
+                        <div class="card border-0 shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">Name</h5>
+                                <p class="card-text">{{ $order->guest_firstname }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="card border-0 shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">Surname</h5>
+                                <p class="card-text">{{ $order->guest_surname }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    @php
+                        // Inizializza un array associativo per memorizzare il nome del cibo e il conteggio totale delle occorrenze per ID
+                        $totalFoodCounts = [];
+
+                        // Itera attraverso i cibi di ogni ordine per accumulare il conteggio totale delle occorrenze
+                        foreach ($order->foods as $food) {
+                            $foodId = $food->id;
+                            $foodName = $food->name;
+                            if (isset($totalFoodCounts[$foodId])) {
+                                // Incrementa il conteggio se il cibo è già stato incontrato prima
+                                $totalFoodCounts[$foodId]['count']++;
+                            } else {
+                                // Inizializza il conteggio a 1 se è la prima volta che il cibo viene incontrato
+                                $totalFoodCounts[$foodId] = [
+                                    'name' => $foodName,
+                                    'count' => 1,
+                                ];
+                            }
+                        }
+                    @endphp
+                    <div class="col-12 col-lg-4">
+                        <div class="card border-0 shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">Foods</h5>
+                                <p class="card-text">
+                                    @foreach ($totalFoodCounts as $foodId => $foodData)
+                                        <span class="food-item">{{ $foodData['name'] }} (x{{ $foodData['count'] }})</span>
+                                    @endforeach
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="card border-0 shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">Email</h5>
+                                <p class="card-text">{{ $order->email }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="card border-0 shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">Address</h5>
+                                <p class="card-text">{{ $order->guest_address }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="card border-0 shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">Phone</h5>
+                                <p class="card-text">{{ $order->guest_phone }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="card border-0 shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">Email</h5>
+                                <p class="card-text">{{ $order->email }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="card border-0 shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">Data</h5>
+                                <p class="card-text">{{ $order->date }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="card border-0 shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">Total</h5>
+                                <p class="card-text">{{ $order->total }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div> --}}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
                         <tr>
-                            <th scope="row">{{ $order->id }}</th>
-                            <td>
-                                {{ $order->guest_firstname }}
-                            </td>
-                            <td>
-                                {{ $order->guest_surname }}
-                            </td>
-                            <td>
-                                @php
-                                    // Inizializza un array per memorizzare il conteggio totale delle occorrenze di ciascun cibo
-                                    $totalFoodCounts = [];
-
-                                    // Itera attraverso i cibi di ogni ordine per accumulare il conteggio totale delle occorrenze
-                                    foreach ($order->foods as $food) {
-                                        $foodName = $food->name;
-                                        if (isset($totalFoodCounts[$foodName])) {
-                                            // Incrementa il conteggio se il cibo è già stato incontrato prima
-                                            $totalFoodCounts[$foodName]++;
-                                        } else {
-                                            // Inizializza il conteggio a 1 se è la prima volta che il cibo viene incontrato
-                                            $totalFoodCounts[$foodName] = 1;
-                                        }
-                                    }
-                                @endphp
-
-                                @foreach ($totalFoodCounts as $foodName => $count)
-                                    <p>{{ $foodName }} (x{{ $count }})</p>
-                                @endforeach
-                            </td>
-                            <td>
-                                <p>{{ $order->created_at }}</p>
-                            </td>
-                            <td>
-                                <p>{{ $order->total }}</p>
-                            </td>
+                            <th scope="col">Name</th>
+                            <th scope="col">Surname</th>
+                            <th scope="col">Foods</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Total €</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                        @foreach ($orders as $index => $order)
+                            <tr>
+                                <td>
+                                    {{ $order->guest_firstname }}
+                                </td>
+                                <td>
+                                    {{ $order->guest_surname }}
+                                </td>
+                                <td>
+                                    @php
+                                        // Inizializza un array associativo per memorizzare il nome del cibo e il conteggio totale delle occorrenze per ID
+                                        $totalFoodCounts = [];
+
+                                        // Itera attraverso i cibi di ogni ordine per accumulare il conteggio totale delle occorrenze
+                                        foreach ($order->foods as $food) {
+                                            $foodId = $food->id;
+                                            $foodName = $food->name;
+                                            if (isset($totalFoodCounts[$foodId])) {
+                                                // Incrementa il conteggio se il cibo è già stato incontrato prima
+                                                $totalFoodCounts[$foodId]['count']++;
+                                            } else {
+                                                // Inizializza il conteggio a 1 se è la prima volta che il cibo viene incontrato
+                                                $totalFoodCounts[$foodId] = [
+                                                    'name' => $foodName,
+                                                    'count' => 1,
+                                                ];
+                                            }
+                                        }
+                                    @endphp
+                                    <p class="card-text">
+                                        @foreach ($totalFoodCounts as $foodId => $foodData)
+                                            <span class="food-item">{{ $foodData['name'] }}
+                                                (x{{ $foodData['count'] }})
+                                            </span>
+                                        @endforeach
+                                    </p>
+                                </td>
+                                <td>
+                                    {{ $order->guest_address }}
+                                </td>
+                                <td>
+                                    {{ $order->guest_phone }}
+                                </td>
+                                <td>
+                                    {{ $order->email }}
+                                </td>
+                                <td>
+                                    {{ $order->date }}
+                                </td>
+                                <td>
+                                    {{ $order->total }}
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        @endif
     </div>
 @endsection

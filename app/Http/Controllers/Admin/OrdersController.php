@@ -83,6 +83,7 @@ class OrdersController extends Controller
                 $new_order->guest_address = $validatedData['address'];
                 $new_order->guest_phone = $validatedData['phone'];
                 $new_order->email = $validatedData['email'];
+                $new_order->date = now();
                 $new_order->total = $validatedData['amount'];
                 $new_order->save();
 
