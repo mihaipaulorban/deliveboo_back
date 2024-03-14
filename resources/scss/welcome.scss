@@ -1,7 +1,21 @@
-.pr-img {
-    display: block;
-    position: absolute;
-    bottom: 20px;
+h1,
+h2,
+h3,
+h4 {
+    color: #386641;
+}
+
+@media (min-width: 900px) {
+    .pr-img {
+        display: block;
+        position: absolute;
+        bottom: 20px;
+        left: -50px;
+    }
+
+    img {
+        width: 900px;
+    }
 }
 
 .pr {
