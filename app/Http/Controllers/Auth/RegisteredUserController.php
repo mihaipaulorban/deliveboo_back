@@ -47,8 +47,7 @@ class RegisteredUserController extends Controller
             'address' => 'required|string|max:255',
             'p_iva' => 'required|string|max:11|unique:restaurants',
             'restaurant_types' => 'required|array|min:1|max:9',
-            'cover_img' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Aggiungi regole di validazione per l'immagine della copertina
-            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Aggiungi regole di validazione per il logo
+            'cover_img' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
 

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('name', 50);
             $table->string('slug', 100);
             $table->string('address');
-            $table->string('logo')->nullable();
             $table->string('p_iva', 11);
             $table->string('cover_img')->nullable();
             $table->timestamps();

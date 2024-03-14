@@ -121,27 +121,10 @@
                                     @enderror
                                 </div>
                             </div>
-
-                            {{-- campo per il logo --}}
-                            <div class="mb-4 row">
-                                <label for="logo" class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Logo') }}</label>
-                            
-                                <div class="col-md-6">
-                                    <input id="logo" type="file" class="form-control @error('logo') is-invalid @enderror" name="logo" value="{{ old('logo') }}">
-                                    <strong id="logoError" class="text-danger error" style="font-size: 0.875em;" role="alert"></strong>
-                            
-                                    @error('logo')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
                             {{-- campo per l'immagine di copertina --}}
 
                             <div class="mb-4 row">
-                                <label for="cover_img" class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Background cover') }}</label>
+                                <label for="cover_img" class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Image') }}</label>
                             
                                 <div class="col-md-6">
                                     <input id="cover_img" type="file" class="form-control @error('cover_img') is-invalid @enderror" name="cover_img" value="{{ old('cover_img') }}">
