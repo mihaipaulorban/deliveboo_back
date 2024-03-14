@@ -21,7 +21,7 @@ class RestaurantTypesSeeder extends Seeder
             ['name' => 'Sushi', 'img' => './storage/typeimg/sushi.jpg'],
             ['name' => 'Thai', 'img' => './storage/typeimg/thai.jpeg'],
             ['name' => 'Greek', 'img' => './storage/typeimg/greek.jpg'],
-            ['name' => 'Romanian', 'img' => './storage/typeimg/romanian.jpg'],
+            ['name' => 'Romanian', 'img' => './storage/typeimg/romanian.jpeg'],
             ['name' => 'North African', 'img' => './storage/typeimg/northafrican.jpeg'],
         ];
         foreach ($types as $type) {
