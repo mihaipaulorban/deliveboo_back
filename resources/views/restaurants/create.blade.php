@@ -27,16 +27,6 @@
             <!-- Campo per l'immagine -->
             <div class="mb-3">
                 <label class="form-label">
-                    <h3>Restaurant Image</h3>
-                </label>
-                <input type="file" class="form-control" name="logo" required>
-                @error('logo')
-                    <div class="alert alert-danger mt-1">{{ $message }}</div>
-                @enderror
-            </div>
-            <!-- Campo per l'immagine -->
-            <div class="mb-3">
-                <label class="form-label">
                     <h3>Restaurant Cover Image</h3>
                 </label>
                 <input type="file" class="form-control" name="cover_img" required>
