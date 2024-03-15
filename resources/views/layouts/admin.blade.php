@@ -86,13 +86,10 @@
         {{-- Header --}}
         <header class="navbar navbar-dark sticky-top flex-md-nowrap p-2 shadow">
             <div class="row justify-content-between">
-                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">DeliveBoo</a>
+                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/"><img class="logo-img"
+                        src="{{ asset('/' . 'deliveboologo.png') }}" alt=""></a>
                 <!-- Bottone per il toggle della sidebar -->
-                <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+
             </div>
             <div class="navbar-nav">
                 <div class="nav-item text-nowrap ms-2">
@@ -117,19 +114,19 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.foods.index') }}">
-                                    <i class="fa-solid fa-burger"></i> Foods
+                                    <i class="fa-solid fa-burger"></i> Your Foods
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.restaurants.index') }}">
-                                    <i class="fa-solid fa-utensils"></i> Restaurants
+                                    <i class="fa-solid fa-utensils"></i> Your Restaurant
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.orders') }}">
-                                    <i class="fa-solid fa-receipt"></i> Orders
+                                    <i class="fa-solid fa-receipt"></i> Your Orders
                                 </a>
                             </li>
                         </ul>
