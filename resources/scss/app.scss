@@ -35,6 +35,7 @@ td {
     height: 9.375rem;
     overflow: hidden;
     border-radius: 50%;
+
     img {
         max-width: 100%;
     }
@@ -43,6 +44,7 @@ td {
 form {
     margin: 0;
 }
+
 
 .table th:first-child,
 .table td:first-child {
@@ -104,7 +106,7 @@ form {
     overflow-y: auto; // Abilita lo scrolling se necessario
     height: 100vh; // Imposta l'altezza al 100% dell'altezza dello schermo
     position: sticky;
-    top: 70px; // Se l'header è alto 70px
+    top: 95px; // Se l'header è alto 70px
     left: 0;
 
     .nav-item {
@@ -140,6 +142,7 @@ form {
 main {
     padding-top: 70px;
     min-height: auto;
+
     @media (max-width: 768px) {
         margin-left: 0;
     }
