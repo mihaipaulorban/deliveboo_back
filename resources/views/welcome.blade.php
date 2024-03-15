@@ -11,14 +11,13 @@
             {{-- colonna 1 con testo --}}
 
             <div class="col-12 text-center col-md-6"> 
-                <h1 class="fw-bold">Welcome</h1>
+                <h1 class="fw-bold">We're glad to have you with us!</h1>
 
                 {{-- <div class="box-2"></div> --}}
 
-                <p class="fs-4 my-5">welcome to your restaurant management page.</p>
                 <div class="container p-3 mt-3">
-                <h3 >
-                    Welcome to our management website! Here you'll find valuable resources, effective tools, and innovative ideas to guide you towards success. We're here to support you on your journey of growth and professional development. Explore, learn, and be inspired. We're glad to have you with us!
+                <h3>
+                    Welcome to your restaurant management page. Here you can register your restaurant, login to your personal page and add food items. 
                 </h3>
             </div>
 
