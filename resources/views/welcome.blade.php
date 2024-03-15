@@ -29,7 +29,7 @@
             {{-- colonna 2 con img e position --}}
             <div class="col-12 col-md-6 pr ">
                 <div class="container-img">
-                    <img  class=" pr-img" src="https://cdn.discordapp.com/attachments/1213127782629113919/1213135927367434281/Immagini_organizzazione.png?ex=65f45fe0&is=65e1eae0&hm=69232915847dc5cea0adbfd9fdc42777bcf11e74251033713555a14fc622fdc6&" alt="">
+                    
 
                     {{-- <div class="box w-100"></div> --}}
                 </div>

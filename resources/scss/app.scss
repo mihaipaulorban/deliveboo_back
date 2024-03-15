@@ -133,10 +133,20 @@ form {
 .navbar {
     position: fixed;
     background-color: #386641;
-    height: 70px;
     top: 0;
     width: 100%;
     z-index: 1000; // Imposta un valore alto per la z-index per assicurarsi che la navbar sia sopra gli altri elementi
+    img {
+        width: 250px;
+    }
+
+    a {
+        color: #f2e8cf;
+        font-size: 18px;
+        &:hover {
+            color: #f88a35;
+        }
+    }
 }
 
 main {
