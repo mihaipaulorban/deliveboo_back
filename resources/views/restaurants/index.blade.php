@@ -2,7 +2,7 @@
 
 @section('content')
     @include('partials.session_message')
-    <div class="container">
+    <div class="container position-absolute">
         <div class="info">
             <h2 class="mt-4">{{ $restaurant->name }}</h2>
             <p>Address: {{ $restaurant->address }}</p>

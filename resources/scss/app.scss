@@ -138,6 +138,14 @@ form {
 }
 
 main {
+    padding-top: 70px;
+    min-height: auto;
+    @media (max-width: 768px) {
+        margin-left: 0;
+    }
+}
+
+.position-absolute {
     position: absolute; // Cambia da fixed a absolute
     top: 70px;
     left: 200px;

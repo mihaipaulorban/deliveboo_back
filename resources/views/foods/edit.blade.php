@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container position-absolute">
         <form id="foods-edit-form" action="{{ route('admin.foods.update', $food->id) }}" method="POST"
             enctype="multipart/form-data">
             @csrf

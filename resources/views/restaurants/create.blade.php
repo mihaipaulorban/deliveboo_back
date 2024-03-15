@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container position-absolute">
         <form action="{{ route('admin.restaurants.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <h1 class="text-center">Create a new restaurant</h1>

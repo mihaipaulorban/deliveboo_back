@@ -2,7 +2,7 @@
 
 @section('content')
     @include('partials.session_message')
-    <div class="container">
+    <div class="container position-absolute">
         <div class="card mt-4 align-items-center shadow p-3 mb-5 bg-body-tertiary rounded border-0"
             style="width: fit-content;">
             <div class="card-body d-flex gap-3">

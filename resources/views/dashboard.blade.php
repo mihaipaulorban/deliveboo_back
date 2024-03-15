@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container mt-4 vh-100">
+    <div class="container mt-4 vh-100 position-absolute">
 
         {{-- Toast per creazione / eliminazione / modifica piatto --}}
         @if (session('message'))

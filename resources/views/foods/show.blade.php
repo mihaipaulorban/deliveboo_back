@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container mt-4 vh-100">
+    <div class="container mt-4 vh-100 position-absolute">
         <h1> {{ $food->name }}</h1>
         @if ($food->is_vegetarian)
             <span class="badge text-bg-success mb-4">Vegetarian</span>
