@@ -1,10 +1,3 @@
-h1,
-h2,
-h3,
-h4 {
-    color: #386641;
-}
-
 @media (min-width: 900px) {
     .pr-img {
         width: 100%;
@@ -25,4 +18,25 @@ h4 {
 
 .container-img {
     height: 300px;
+}
+
+.jumbotron {
+    position: relative;
+    overflow: hidden;
+    height: calc(100vh - 86px);
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url("../../public/bg-welcome.jpg"); /* Percorso dell'immagine di sfondo */
+        filter: blur(8px); /* Aggiungi qui l'effetto di sfocatura */
+        -webkit-filter: blur(8px); /* Supporto per browser WebKit */
+        z-index: -1;
+    }
 }
