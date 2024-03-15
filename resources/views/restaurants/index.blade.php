@@ -12,7 +12,7 @@
                 <span>{{ $type->name }}</span>
             @endforeach
         </div>
-        <div class="img">
+        <div class="img restaurant-container">
             <img id="restaurant-logo" src="{{ asset('storage/' . $restaurant->cover_img) }}" alt="{{ $restaurant->slug }}">
         </div>
     </div>
