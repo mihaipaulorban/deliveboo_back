@@ -2,7 +2,7 @@
 
 @section('content')
     @include('partials.session_message')
-    <div class="container position-absolute d-flex justify-content-between">
+    <div class="container position-absolute d-sm-flex mt-5 justify-content-between">
         <div class="info">
             <h2 class=" display-1 mt-5 fw-bold ">{{ $restaurant->name }}</h2>
             <p class="display-5">Address: <span>{{ $restaurant->address }}</span></p>

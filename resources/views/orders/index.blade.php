@@ -3,7 +3,7 @@
 @section('content')
     @include('partials.session_message')
     <div class="container position-absolute">
-        <div class="container d-flex">
+        <div class="container d-sm-flex">
             <div class="my-card align-items-center shadow mt-5 mb-5 me-5 rounded border-0" style="width: fit-content;">
                 <div class="card-body gap-3">
                     <h5 class="card-title mb-0">Total orders:</h5>
