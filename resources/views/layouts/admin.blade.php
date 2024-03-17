@@ -89,7 +89,32 @@
                 <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/"><img class="logo-img"
                         src="{{ asset('/' . 'deliveboologo.png') }}" alt=""></a>
                 <!-- Bottone per il toggle della sidebar -->
-
+            </div>
+            <div class=" mobile-nav-drop dropdown">
+                <button class="nav-dashboard-drop dropdown-toggle border-0" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Dashboard
+                </button>
+                <ul class="dropdown-menu nav-dashboard-drop">
+                    <li>
+                        <a class="  nav-link {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                            href="{{ route('admin.foods.index') }}">
+                            <i class="fa-solid fa-burger me-2"></i> Your Foods
+                        </a>
+                    </li>
+                    <li>
+                        <a class="  nav-link  {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                            href="{{ route('admin.restaurants.index') }}">
+                            <i class="fa-solid fa-utensils me-2"></i> Your Restaurant
+                        </a>
+                    </li>
+                    <li>
+                        <a class="  nav-link  {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                            href="{{ route('admin.orders') }}">
+                            <i class="fa-solid fa-receipt me-2"></i> Your Orders
+                        </a>
+                    </li>
+                </ul>
             </div>
             <div class="navbar-nav">
                 <div class="nav-item text-nowrap ms-2">
@@ -101,6 +126,7 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
+
                 </div>
             </div>
         </header>

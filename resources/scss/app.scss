@@ -35,6 +35,7 @@ td {
     height: 9.375rem;
     overflow: hidden;
     border-radius: 50%;
+
     img {
         max-width: 100%;
     }
@@ -134,13 +135,16 @@ form {
     top: 0;
     width: 100%;
     z-index: 1000; // Imposta un valore alto per la z-index per assicurarsi che la navbar sia sopra gli altri elementi
+
     img {
         width: 250px;
     }
 
+
     a {
         color: #f2e8cf;
         font-size: 18px;
+
         &:hover {
             color: #f88a35;
         }
@@ -150,6 +154,7 @@ form {
 main {
     padding-top: 70px;
     min-height: auto;
+
     @media (max-width: 768px) {
         margin-left: 0;
     }
@@ -173,6 +178,7 @@ main {
     padding: 20px;
     color: white;
 }
+
 .bg-glass {
     /* From https://css.glass */
     background: #f88a3599;
@@ -190,6 +196,7 @@ main {
     background-color: white;
     border: 1px solid #f88a35;
     border-radius: 30px;
+
     &:hover {
         color: white;
         background-color: #f88a35;
@@ -203,4 +210,26 @@ main {
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     color: white;
+}
+
+.mobile-nav-drop {
+
+    display: none;
+
+    .nav-dashboard-drop {
+        color: #f2e8cf;
+        background-color: #386641;
+        width: 11.875rem;
+        padding-left: 10px;
+
+    }
+
+}
+
+
+
+@media screen and (max-width: 576px) {
+    .mobile-nav-drop {
+        display: block;
+    }
 }
