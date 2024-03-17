@@ -108,25 +108,26 @@
         <div class="container-fluid">
             <div class="row overflow-auto">
                 <!-- Barra laterale -->
-                <nav id="sidebarMenu" class="d-md-block sidebar collapse">
+                <nav id="sidebarMenu" class="d-md-block sidebar collapse mt-4">
                     <div class="position-sticky pt-3">
+                        <h3 class="text-white text-center">Dashboard</h3>
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.foods.index') }}">
-                                    <i class="fa-solid fa-burger"></i> Your Foods
+                                    <i class="fa-solid fa-burger me-2"></i> Your Foods
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.restaurants.index') }}">
-                                    <i class="fa-solid fa-utensils"></i> Your Restaurant
+                                    <i class="fa-solid fa-utensils me-2"></i> Your Restaurant
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.orders') }}">
-                                    <i class="fa-solid fa-receipt"></i> Your Orders
+                                    <i class="fa-solid fa-receipt me-2"></i> Your Orders
                                 </a>
                             </li>
                         </ul>

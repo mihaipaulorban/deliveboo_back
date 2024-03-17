@@ -44,10 +44,10 @@
                     <div class="alert alert-danger mt-1">{{ $message }}</div>
                 @enderror
             </div>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn my-btn">Submit</button>
         </form>
         <div>
-            <a class="btn btn-secondary my-3" href="{{ route('admin.restaurants.index') }}">Go back to Restaurants list</a>
+            <a class="btn my-btn my-3" href="{{ route('admin.restaurants.index') }}">Go back to Restaurants list</a>
         </div>
     </div>
 @endsection

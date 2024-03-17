@@ -167,3 +167,40 @@ main {
         left: 0;
     }
 }
+
+.my-card {
+    background-color: #f88a35;
+    padding: 20px;
+    color: white;
+}
+.bg-glass {
+    /* From https://css.glass */
+    background: #f88a3599;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.6px);
+    -webkit-backdrop-filter: blur(6.6px);
+    border: 1px solid rgba(82, 82, 82, 0.3);
+    color: white;
+}
+
+.my-btn {
+    padding: 5px 20px;
+    color: #f88a35;
+    background-color: white;
+    border: 1px solid #f88a35;
+    border-radius: 30px;
+    &:hover {
+        color: white;
+        background-color: #f88a35;
+        border: 1px solid #f88a35;
+    }
+}
+
+.bg-orange {
+    /* From https://css.glass */
+    background: #f88a35;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    color: white;
+}

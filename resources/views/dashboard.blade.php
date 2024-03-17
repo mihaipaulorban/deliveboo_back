@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container mt-4 vh-100 position-absolute">
+    <div class="container vh-100 position-absolute mt-5">
 
         {{-- Toast per creazione / eliminazione / modifica piatto --}}
         @if (session('message'))
@@ -19,10 +19,11 @@
         @endif
 
         {{-- Titolo --}}
-        <h2>Food items ({{ count($foods) }})</h2>
+        <h2 class="display-1 fw-bold">Food items <span class="bg-orange px-4">{{ count($foods) }}
+            </span></h2>
 
         {{-- Pulsante crea nuovo cibo --}}
-        <a href="{{ route('admin.foods.create') }}" class="hoverable btn btn-success my-4">
+        <a href="{{ route('admin.foods.create') }}" class="hoverable btn my-btn my-4">
             Add a new food item <i class="fa-solid fa-plus"></i>
         </a>
 

@@ -92,10 +92,13 @@
                 @enderror
             </div>
 
-            <button type="button" class="btn btn-success" onclick="foodsValidation()">Create</button>
+            <div>
+
+            </div>
+            <button type="button" class="btn btn-success rounded-5" onclick="foodsValidation()">Create</button>
+            <div>
+                <a class="btn my-btn my-3" href="{{ route('admin.foods.index') }}">Go back to foods list</a>
+            </div>
         </form>
-        <div>
-            <a class="btn btn-secondary my-3" href="{{ route('admin.foods.index') }}">Go back to foods list</a>
-        </div>
     </div>
 @endsection

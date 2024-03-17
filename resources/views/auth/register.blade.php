@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -9,7 +8,8 @@
                     <div class="card-header">{{ __('Register') }}</div>
 
                     <div class="card-body">
-                        <form id="registration-form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                        <form id="registration-form" method="POST" action="{{ route('register') }}"
+                            enctype="multipart/form-data">
                             @csrf
 
                             <div class="mb-4 row">
@@ -124,12 +124,16 @@
                             {{-- campo per l'immagine di copertina --}}
 
                             <div class="mb-4 row">
-                                <label for="cover_img" class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Image') }}</label>
-                            
+                                <label for="cover_img"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Image') }}</label>
+
                                 <div class="col-md-6">
-                                    <input id="cover_img" type="file" class="form-control @error('cover_img') is-invalid @enderror" name="cover_img" value="{{ old('cover_img') }}">
-                                    <strong id="coverImgError" class="text-danger error" style="font-size: 0.875em;" role="alert"></strong>
-                            
+                                    <input id="cover_img" type="file"
+                                        class="form-control @error('cover_img') is-invalid @enderror" name="cover_img"
+                                        value="{{ old('cover_img') }}">
+                                    <strong id="coverImgError" class="text-danger error" style="font-size: 0.875em;"
+                                        role="alert"></strong>
+
                                     @error('cover_img')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -137,7 +141,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            
+
                             {{-- campo per la partita iva --}}
                             <div class="mb-4 row">
                                 <label for="p_iva"
@@ -192,7 +196,7 @@
                             <!-- Fine nuovi campi per il ristorante -->
                             <div class="mb-4 row mt-4 justify-content-center ">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="button" class="btn btn-primary" onclick="validateForm()">
+                                    <button type="button" class="btn my-btn" onclick="validateForm()">
                                         {{ __('Register') }}
                                     </button>
                                 </div>
@@ -204,4 +208,3 @@
         </div>
     </div>
 @endsection
-
