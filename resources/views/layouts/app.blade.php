@@ -23,26 +23,19 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow p-1">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-
-                    {{-- config('app.name', 'Laravel') --}}
-                </a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/') }}"><img src="{{ asset('/' . 'deliveboologo.png') }}"
+                                alt="Logo"></a>
+                    </li>
+                </ul>
+                <button class="navbar-toggler shadow-sm" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}"><img
-                                    src="{{ asset('/' . 'deliveboologo.png') }}" alt="Logo"></a>
-                        </li>
-                    </ul>
-
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->

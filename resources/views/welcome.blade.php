@@ -21,11 +21,11 @@
                     </div>
                 </section>
 
-                <div class="mt-5 d-flex justify-content-between">
+                <div class="d-flex flex-column flex-md-row justify-content-between">
 
-                    <section class="mt-5" style="height: 300px">
+                    <section>
                         <div class="container p-3">
-                            <div class="card bg-glass border-0 p-3" style="height: 200px">
+                            <div class="card bg-glass border-0 p-3">
                                 <div class="card-body">
                                     <h3 class="card-title">
                                         Manage your restaurant menu and orders easily.
@@ -40,9 +40,9 @@
                         </div>
                     </section>
 
-                    <section class="mt-5">
+                    <section>
                         <div class="container p-3">
-                            <div class="card bg-glass border-0 p-3" style="height: 200px">
+                            <div class="card bg-glass border-0 p-3">
                                 <div class="card-body">
                                     <h3 class="card-title">
                                         Track your sales and revenue in real-time analytics.
@@ -62,7 +62,7 @@
                 </div>
 
 
-                <section class="mt-5">
+                <section>
                     <div class="container p-3">
                         <div class="card bg-glass border-0 p-4">
                             <div class="card-body">
