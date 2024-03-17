@@ -140,7 +140,6 @@ form {
         width: 250px;
     }
 
-
     a {
         color: #f2e8cf;
         font-size: 18px;
@@ -162,7 +161,7 @@ main {
 
 .position-absolute {
     position: absolute; // Cambia da fixed a absolute
-    top: 70px;
+    top: 100px;
     left: 200px;
     right: 0;
     bottom: 0; // Imposta il bordo inferiore a 0 per farlo espandere fino al fondo dello schermo
@@ -213,7 +212,6 @@ main {
 }
 
 .mobile-nav-drop {
-
     display: none;
 
     .nav-dashboard-drop {
@@ -221,12 +219,8 @@ main {
         background-color: #386641;
         width: 11.875rem;
         padding-left: 10px;
-
     }
-
 }
-
-
 
 @media screen and (max-width: 576px) {
     .mobile-nav-drop {
