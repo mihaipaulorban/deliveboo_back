@@ -11,7 +11,7 @@
         </div>
         <div>
             <p>Dear {{ $order->guest_firstname }} {{ $order->guest_surname }},</p>
-            <p>Your order is on the way to you,please listen to your doorbell to receive your tasty food.</p>
+            <p>Your order is on the way to you, please listen to your doorbell to receive your tasty food.</p>
             <p>Your food was sent to {{ $order->guest_address }}</p>
             <div>Here is a summary of your order:</div>
             @foreach ($counts as $food => $count)
