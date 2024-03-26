@@ -4,21 +4,21 @@
     @include('partials.session_message')
     <div class="container position-absolute">
         <div class="container d-sm-flex">
-            <div class="my-card align-items-center shadow mt-5 mb-5 me-5 rounded border-0" style="width: fit-content;">
+            <div class="my-card align-items-center shadow mt-5 mb-5 me-5 rounded" style="width: fit-content;">
                 <div class="card-body gap-3">
                     <h5 class="card-title mb-0">Total orders:</h5>
-                    <p class="card-text text-center mt-2 display-1">{{ count($orders) }}</p>
+                    <p class="card-text text-center mt-2 display-4">{{ count($orders) }}</p>
                 </div>
             </div>
 
-            <div class="my-card align-items-center shadow mt-5 mb-5 me-5 rounded border-0" style="width: fit-content;">
+            <div class="my-card align-items-center shadow mt-5 mb-5 me-5 rounded" style="width: fit-content;">
                 <div class="card-body gap-3">
                     <h5 class="card-title mb-0">Total revenue:</h5>
-                    <p class="card-text text-center mt-2 display-1">€ {{ $orders->sum('total') }}</p>
+                    <p class="card-text text-center mt-2 display-4">€ {{ $orders->sum('total') }}</p>
                 </div>
             </div>
 
-            <div class="my-card align-items-center shadow mb-5 mt-5 rounded border-0" style="width: fit-content;">
+            <div class="my-card align-items-center shadow mb-5 mt-5 rounded" style="width: fit-content;">
                 <div class="card-body gap-3">
                     <h5 class="card-title mb-0">Most ordered item:</h5>
                     @php
@@ -42,7 +42,7 @@
                         }
                     @endphp
 
-                    <p class="card-text text-center mt-2 display-1">{{ $mostOrderedItem }}</p>
+                    <p class="card-text text-center mt-2 display-4">{{ $mostOrderedItem }}</p>
                 </div>
 
             </div>
