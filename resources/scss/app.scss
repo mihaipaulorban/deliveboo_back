@@ -176,7 +176,6 @@ main {
     border: 2px solid #f88a35;
     padding: 20px;
     color: #f88a35;
-    ;
 }
 
 .bg-glass {
@@ -223,9 +222,26 @@ main {
     }
 }
 
+.custom-btn {
+    border: 1px solid #f88a35;
+    color: #f88a35;
+
+    i {
+        color: #f88a35;
+    }
+
+    &:hover {
+        border: 1px solid #f88a35;
+        background-color: #f88a35;
+
+        i {
+            color: #fff;
+        }
+    }
+}
+
 @media screen and (max-width: 576px) {
     .mobile-nav-drop {
         display: block;
     }
-
 }

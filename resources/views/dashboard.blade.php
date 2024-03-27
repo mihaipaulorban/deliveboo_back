@@ -75,7 +75,7 @@
                         {{-- Modifica --}}
                         <td>
                             <a href="{{ route('admin.foods.edit', $food) }}">
-                                <div class="btn btn-warning rounded">
+                                <div class="btn custom-btn rounded">
                                     <i class="fa fa-edit"></i>
                                 </div>
                             </a>
@@ -86,7 +86,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-danger hoverable rounded" data-bs-toggle="modal"
+                                <button type="button" class="btn custom-btn hoverable rounded" data-bs-toggle="modal"
                                     data-bs-target="#id-{{ $food->id }}">
                                     <i class="fa fa-trash-alt "></i>
                                 </button>
